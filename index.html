@@ -1,7 +1,7 @@
 <!doctype html><html lang=ja><head><meta charset=utf-8>
 <meta name=viewport content='width=device-width,initial-scale=1'>
 <meta name=robots content='noindex,nofollow'>
-<title>個別相談 文書（0〜5）</title>
+<title>個別相談 台本（0〜5）</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0f1a12;color:#e9f1e9;font-family:system-ui,'Hiragino Kaku Gothic ProN',Meiryo,sans-serif;line-height:1.85;font-size:16px}
@@ -12,23 +12,26 @@ h1{font-size:1.15rem;color:#8fe0a8;margin:6px 0 4px}
 .tabs{display:flex;gap:6px;overflow-x:auto;position:sticky;top:0;background:#0f1a12;padding:8px 0;z-index:10;-webkit-overflow-scrolling:touch}
 .tab{flex:0 0 auto;background:#19271d;border:1px solid #2c4233;color:#bcd6c2;border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer;white-space:nowrap}
 .tab.on{background:#2e9e5b;border-color:#2e9e5b;color:#fff}
-.panel{display:none;animation:f .2s}
-.panel.on{display:block}
+.panel{display:none;animation:f .2s}.panel.on{display:block}
 @keyframes f{from{opacity:.3}to{opacity:1}}
 .card{background:#16241b;border:1px solid #25382b;border-radius:14px;padding:16px 16px 18px;margin-top:12px}
 .ttl{font-size:1.1rem;color:#8fe0a8;font-weight:800;margin:0 0 4px}
-.lead{color:#cfe0d2;font-size:.92rem;margin:0 0 14px}
-.h{color:#ffd27a;font-weight:800;font-size:.95rem;margin:16px 0 4px}
+.lead{color:#cfe0d2;font-size:.92rem;margin:0 0 12px}
+.h{color:#ffd27a;font-weight:800;font-size:.95rem;margin:14px 0 4px}
 .row{margin:2px 0 2px 2px}
-.q{margin:2px 0 2px 4px;color:#dcebe0}
-.q b{color:#9fe6b6}
-.say{background:#1b2c20;border-left:3px solid #2e9e5b;border-radius:8px;padding:9px 12px;margin-top:4px;color:#e9f1e9}
 .mini{color:#90a89a;font-size:.78rem;margin-top:18px;border-top:1px solid #25382b;padding-top:10px}
 b{color:#ffd27a}
+.dim{color:#788c80}
+.imp{background:#19271d;border-left:3px solid #2e9e5b;border-radius:6px;padding:5px 9px;margin:4px 0;font-weight:600}
+.phase{background:#13201a;border:1px solid #294234;border-radius:10px;padding:12px 13px;margin-top:8px}
+.phh{color:#9fe6b6;font-weight:800;font-size:.92rem;margin-bottom:4px}
+.step{color:#ffd27a;font-weight:700;font-size:.85rem;margin:10px 0 2px}.step:first-of-type{margin-top:2px}
+.say{display:block;color:#e9f1e9;margin:2px 0 2px 4px;border-left:3px solid #2e9e5b;padding:5px 0 5px 9px;background:#1b2c20;border-radius:0 8px 8px 0}
+.do{color:#bcd6c2;font-size:.88rem;margin:2px 0 2px 4px}
 </style></head>
 <body><div class=wrap>
-<h1>🌱 農業のゲームチェンジ｜個別相談 文書</h1>
-<div class=sub>0〜5のステージ別／タブで切り替え</div>
+<h1>🌱 農業のゲームチェンジ｜個別相談 台本</h1>
+<div class=sub>0〜5のステージ別／前半30分=聞く・後半30分=クロージング</div>
 <div class=note>🔒 営業・伴走の戦略資料です。URLを知っている人は見れます（検索には出ません）。人に共有しないでください。</div>
 
 <div class=tabs id=tabs>
@@ -44,54 +47,58 @@ b{color:#ffd27a}
 
 <div class="panel" data-p=c><div class=card>
   <div class=ttl>共通の進め方</div>
-  <div class=lead>全パターン共通の流れ（ヤスさん流）。</div>
-  <div class=row>1. 申込が来たら、すぐ返す・すぐ日程を決める</div>
-  <div class=row>2. 相談シートを先に確認（段階・地域・作物・面積・売り先・人）</div>
-  <div class=row>3. 電話 or オンライン30分（動画＋シート記入済みの人だけ）</div>
-  <div class=row>4. 3問で深掘り（①現在地 ②理想と期限 ③ボトルネック）</div>
-  <div class=row>5. その場で全部解決しない。「今の段階＋次の一手を1つ」までがゴール</div>
-  <div class=row>6. やりたい人にだけ伴走を案内（月1オンラインMTG＋LINEで日常サポート）</div>
-  <div class=row>7. 強み＝1代目でゼロ→100t。不安も停滞も拡大ミスも全部体験済み</div>
-  <div class=h>🧭 基本の流れ（相談の進め方）</div>
-  <div class=row>① フォーム（相談シート）を先に確認しておく</div>
-  <div class=row>② 挨拶＋「今日は今の段階をはっきりさせて、次の一手を1つ決めましょう」</div>
-  <div class=row>③ その番号タブの「深掘り3問」を順番に聞く</div>
-  <div class=row>④ 「次の一手」を1つ提示（その場で全部解決しない）</div>
-  <div class=row>⑤ やりたい人にだけ「伴走」を案内（月1MTG＋LINE）</div>
-  <div class=row>⑥ クロージングのひとことで締める</div>
+  <div class=lead>全パターン共通（ヤスさん流）。60分の配分＝前半30分「聞く」／後半30分「クロージング」。</div>
+  <div class=h>🧭 全体の流れ</div>
+  <div class=row>① 申込が来たら、すぐ返す・すぐ日程</div>
+  <div class=row>② フォーム（相談シート）を先に確認</div>
+  <div class=row>③【前半30分・聞く】挨拶→深掘り3問→共感・現状整理</div>
+  <div class=row>④【後半30分・クロージング】気づき→次の一手→伴走案内→背中押し→締め</div>
+  <div class=h>⚖️ コツ</div>
+  <div class=row>・前半は"聞くだけ"。すぐ解決策を出さない（信頼が先）</div>
+  <div class=row>・その場で全部解決しない。「今の段階＋次の一手1つ」がゴール</div>
+  <div class=row>・伴走はやりたい人にだけ案内（月1MTG＋LINE）</div>
+  <div class=row>・強み＝1代目でゼロ→100t。不安も停滞も拡大ミスも全部体験済み</div>
 </div></div>
 
 <div class="panel" data-p=f><div class=card>
   <div class=ttl>📋 診断フォーム（10項目・全必須）</div>
-  <div class=lead>理想→痛み→現実→決意の順。相談前に書いてもらう「相談シート」。</div>
-  <div class=row><b>1.</b> 1年後、どんな状態になっていたいですか？<span style="color:#90a89a"> ←理想</span></div>
-  <div class=row><b>2.</b> 今一番頭を抱えていることは何ですか？<span style="color:#90a89a"> ←痛み</span></div>
+  <div class=lead>理想→痛み→現実→決意の順。<b>濃い字＝特に大事</b>／薄い字＝ついで。</div>
+  <div class=imp><b>1.</b> 1年後、どんな状態になっていたいですか？ <span class=dim>←理想・重要</span></div>
+  <div class=imp><b>2.</b> 今一番頭を抱えていることは何ですか？ <span class=dim>←痛み・重要</span></div>
   <div class=row><b>3.</b> 育てたい・育てている作物は何ですか？（未定OK）</div>
   <div class=row><b>4.</b> 今の販売状況を教えてください（まだなしOK・農協/直売/ネット等）</div>
   <div class=row><b>5.</b> 今使える農地はどのくらい？（だいたいでOK・なしもOK）</div>
   <div class=row><b>6.</b> 一人？家族と？スタッフと？（まだわからないOK）</div>
   <div class=row><b>7.</b> 今使える資金はどのくらい？（○○万円くらいでOK）</div>
-  <div class=row><b>8.</b> 農業でいくら稼ぎたい？（年間・年100万円でOK）</div>
-  <div class=row><b>9.</b> 畑の都道府県（市区町村まで分かれば／これから探すなら希望エリアでOK）</div>
-  <div class=row><b>10.</b> 本気で稼ぐために、どのくらい力を注げますか？（意気込み）<span style="color:#90a89a"> ←決意</span></div>
+  <div class=imp><b>8.</b> 農業でいくら稼ぎたい？（年間・年100万円でOK） <span class=dim>←目標・重要</span></div>
+  <div class="row dim"><b>9.</b> 畑の都道府県（市区町村まで／これから探すなら希望エリアでOK） ←ついで</div>
+  <div class=imp><b>10.</b> 本気で稼ぐために、どのくらい力を注げますか？ <span class=dim>←決意・重要</span></div>
 </div></div>
 
 <div class="panel" data-p=0><div class=card>
   <div class=ttl>0番｜まだ始める前</div>
   <div class=lead>就農前・脱サラ検討・何を作るかも未定。</div>
   <div class=h>📋 シートで特に見る</div>
-  <div class=row>①理想／③作物（未定OK）／⑦資金／⑨地域／⑩決意（ゼロからなので全体も）</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> いつ・どの地域で・どれくらいの規模で始めたい？</div>
-  <div class=q><b>②</b> 何年後に、どんな売上／暮らしにしたい？</div>
-  <div class=q><b>③</b> いま一番ひっかかってる不安は？（資金・作物選び・販路）</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>地域で何が稼げるかを一緒にリサーチ</div>
-  <div class=row>→ 地域に合った作物を決める</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>始め方のスケジュールを引いて、1年で安定生産まで一緒に</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>ゼロから100tをやった僕だから、最初の作物選びと順番を間違えさせない。</div>
+  <div class=row>①理想／③作物（未定OK）／⑦資金／⑨地域／⑩決意</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>今日はありがとうございます。フォーム拝見しました。今日は、◯◯さんの今の段階をはっきりさせて、次の一手を1つ決めるのがゴールです。前半は、今の気持ちや状況をじっくり聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① まず、いつ・どの地域で・どれくらいの規模で始めたいイメージですか？</span>
+    <span class=say>② 1年後、どんな暮らし・売上になっていたいですか？</span>
+    <span class=say>③ 今いちばんひっかかってる不安は何ですか？（資金・作物・販路）</span>
+    <div class=do>→「なるほど、◯◯なんですね」と受け止める。解決策はまだ出さない。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>ゼロイチで一番大事なのは、頑張る量より"最初の順番"です。作物選びと地域を間違えると、何年も遠回りします。</span>
+    <div class=step>次の一手</div>
+    <span class=say>だからまず、◯◯さんの地域で何が稼げるかを一緒にリサーチして、地域に合った作物を決めましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>本当にやりたいなら、ここから一緒に伴走もできます。始め方のスケジュールを引いて、1年かけて安定生産まで。月1で進捗を見て、LINEで日常の判断もサポートします。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>ゼロから100tをやった僕だから、最初の作物選びと順番を間違えさせません。一緒に最短ルートで始めましょう。</span>
+  </div>
 </div></div>
 
 <div class="panel" data-p=1><div class=card>
@@ -99,17 +106,25 @@ b{color:#ffd27a}
   <div class=lead>もう作っているが、収量・品質・出荷が安定しない。</div>
   <div class=h>📋 シートで特に見る</div>
   <div class=row>③作物／④販売状況／⑤農地／②痛み（どこが不安定か）</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> 今の作物・面積・年間の出荷の波は？</div>
-  <div class=q><b>②</b> 「安定した」と言える数字のイメージは？</div>
-  <div class=q><b>③</b> 一番ブレるのはどこ？（収量／品質／出荷スケジュール）</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>弱点を「収量・品質・出荷」の3軸で数字で洗い出す</div>
-  <div class=row>→ 安定化の優先順位を1つ決める</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>3軸を続けて見て、安定生産を作り込む</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>感覚じゃなく数字で弱点を見える化すると、毎年のブレが消えます。</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>フォーム拝見しました。今日は、今の弱点をはっきりさせて、安定化の次の一手を1つ決めましょう。まず今の状況を聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① 今の作物・面積・年間の出荷の波は、どんな感じですか？</span>
+    <span class=say>② 「安定した」と言える状態って、数字でいうとどのイメージ？</span>
+    <span class=say>③ いちばんブレるのはどこですか？（収量／品質／出荷スケジュール）</span>
+    <div class=do>→ どこが不安定かを、本人の言葉で出してもらう。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>安定しないのは、感覚で見てるからです。数字で弱点を見える化すると、毎年のブレが消えます。</span>
+    <div class=step>次の一手</div>
+    <span class=say>まず、収量・品質・出荷の3軸で数字を洗い出して、安定化の優先順位を1つ決めましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>やりたいなら、この3軸を一緒に見続けて、安定生産を作り込みます。月1＋LINEで。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>感覚じゃなく数字で弱点を見える化する。これだけで来年が変わります。一緒にやりましょう。</span>
+  </div>
 </div></div>
 
 <div class="panel" data-p=2><div class=card>
@@ -117,17 +132,25 @@ b{color:#ffd27a}
   <div class=lead>作れるが、JA頼みで価格・販路に不安。</div>
   <div class=h>📋 シートで特に見る</div>
   <div class=row>④販売状況／③作物／⑧目標売上</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> 今の売り先の構成比は？（JA／市場／直販）</div>
-  <div class=q><b>②</b> 増やしたいのは「単価」？「量」？「安定」？</div>
-  <div class=q><b>③</b> 自分の作物と量で、まだ当たれてない売り先は？</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>JA以外（市場・直販・ネット・卸・レストラン）から</div>
-  <div class=row>→ 作物と量に合う1つを選んで開拓</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>売り先を一緒に開拓し、相場に振られにくい出口を増やす</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>出口（売り先）の強さが、資材高や相場崩れに耐える力になります。</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>フォーム拝見しました。今日は、売り先の今を整理して、次に開拓する1つを決めましょう。まず聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① 今の売り先の構成比は？（JA／市場／直販）</span>
+    <span class=say>② 増やしたいのは、単価ですか？量ですか？安定ですか？</span>
+    <span class=say>③ 自分の作物と量で、まだ当たれてない売り先はありますか？</span>
+    <div class=do>→ 不満と"伸ばしたい方向"を引き出す。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>売り先が相場まかせだと、上がった分も全部かぶります。出口の強さが、資材高や相場崩れに耐える力になります。</span>
+    <div class=step>次の一手</div>
+    <span class=say>JA以外（市場・直販・ネット・卸・レストラン）から、作物と量に合う1つを選んで開拓しましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>やりたいなら、一緒に売り先を開拓して、相場に振られにくい出口を増やします。月1＋LINEで。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>出口を1つ作れると、来年の値段の不安がぐっと減ります。一緒に開拓しましょう。</span>
+  </div>
 </div></div>
 
 <div class="panel" data-p=3><div class=card>
@@ -135,17 +158,25 @@ b{color:#ffd27a}
   <div class=lead>売上はあるが、利益が手元に残らない。</div>
   <div class=h>📋 シートで特に見る</div>
   <div class=row>⑤農地／⑦資金／④販売状況／②痛み（利益が残らない所）</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> 1反あたりの売上と、ざっくりの利益は？</div>
-  <div class=q><b>②</b> コストで一番重いのは？（肥料／人件費／出荷経費）</div>
-  <div class=q><b>③</b> 「残るようにしたい」目標額は？</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>コスト構造（肥料・人件費・出荷経費）を見直す</div>
-  <div class=row>→ 1反あたりの利益を数字で改善する一点を決める</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>利益率の改善を数字で追い、再現できる形にする</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>面積を小さくしても、1反あたりの量と利益は守る。この設計が効きます。</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>フォーム拝見しました。今日は、利益が残らない原因を1つ特定して、改善の一手を決めましょう。まず聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① 1反あたりの売上と、ざっくりの利益はどのくらいですか？</span>
+    <span class=say>② コストで一番重いのは？（肥料／人件費／出荷経費）</span>
+    <span class=say>③ 「これくらい残ってほしい」目標額はありますか？</span>
+    <div class=do>→ コストの内訳と、残したい額を出してもらう。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>売上を追うより、1反あたりの利益を数字で見るのが先です。面積を小さくしても、量と利益は守る設計が効きます。</span>
+    <div class=step>次の一手</div>
+    <span class=say>コスト構造（肥料・人件費・出荷経費）を見直して、1反あたりの利益を改善する一点を決めましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>やりたいなら、利益率の改善を数字で追って、再現できる形にします。月1＋LINEで。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>面積を小さくしても、1反あたりの量と利益は守る。この設計を一緒に作りましょう。</span>
+  </div>
 </div></div>
 
 <div class="panel" data-p=4><div class=card>
@@ -153,17 +184,25 @@ b{color:#ffd27a}
   <div class=lead>自分が動かないと回らない。人を使うのが難しい。</div>
   <div class=h>📋 シートで特に見る</div>
   <div class=row>⑥人（一人／家族／スタッフ）／⑤農地</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> 今、自分しかできない作業は？</div>
-  <div class=q><b>②</b> 何時間／週、自分の時間を空けたい？</div>
-  <div class=q><b>③</b> パートさんは何人？任せて困っているのは？</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>パート編成・業務分解・シフト設計で</div>
-  <div class=row>→ 自分が抜けても回る最初の1ステップを決める</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>自分が抜けても回る組織を一緒に作る</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>100tを家族なしの会社型で回してる僕の、人の使い方をそのまま渡せます。</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>フォーム拝見しました。今日は、自分が抜けても回る形の、最初の1ステップを決めましょう。まず聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① 今、自分しかできない作業はどれですか？</span>
+    <span class=say>② 何時間／週、自分の時間を空けたいですか？</span>
+    <span class=say>③ パートさんは何人？任せて困ってることは？</span>
+    <div class=do>→ "自分しかできない作業"を具体的に挙げてもらう。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>一人で抱えると、忙しい・売上上がらない・うまく作れないのループから抜けられません。任せられる形にするのが先です。</span>
+    <div class=step>次の一手</div>
+    <span class=say>パート編成・業務分解・シフト設計で、自分が抜けても回る最初の1ステップを決めましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>やりたいなら、自分が抜けても回る組織を一緒に作ります。月1＋LINEで。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>100tを家族なしの会社型で回してる僕の、人の使い方をそのまま渡せます。一緒に組みましょう。</span>
+  </div>
 </div></div>
 
 <div class="panel" data-p=5><div class=card>
@@ -171,20 +210,28 @@ b{color:#ffd27a}
   <div class=lead>拡大したいが、どこから手を付けるか迷う。</div>
   <div class=h>📋 シートで特に見る</div>
   <div class=row>⑤農地／⑥人／⑦資金／⑧目標売上</div>
-  <div class=h>🔎 深掘り3問</div>
-  <div class=q><b>①</b> 伸ばしたい売上の目標と期限は？</div>
-  <div class=q><b>②</b> 今のボトルネックは？（土地／人／販路／設備）</div>
-  <div class=q><b>③</b> 過去に「広げて苦しくなった」経験は？</div>
-  <div class=h>➡️ 次の一手</div>
-  <div class=row>土地・人・販路・設備のうち</div>
-  <div class=row>→ どこから手を付ければ折れないか「順番」を決める</div>
-  <div class=h>🤝 伴走でやること</div>
-  <div class=row>順番に沿って拡大を一緒に進め、判断ミスを防ぐ</div>
-  <div class=h>💬 クロージング</div>
-  <div class=say>規模拡大の判断ミスも体験済み。折れない順番を一緒に引きます。</div>
+  <div class=phase><div class=phh>🎤 前半30分｜聞く</div>
+    <div class=step>オープニング</div>
+    <span class=say>フォーム拝見しました。今日は、拡大の"折れない順番"を決めましょう。まず聞かせてください。</span>
+    <div class=step>深掘り（聞くだけ・共感）</div>
+    <span class=say>① 伸ばしたい売上の目標と、期限はありますか？</span>
+    <span class=say>② 今のボトルネックはどこ？（土地／人／販路／設備）</span>
+    <span class=say>③ 過去に「広げて苦しくなった」経験はありますか？</span>
+    <div class=do>→ 拡大の不安と、過去のつまずきを聞く。</div>
+  </div>
+  <div class=phase><div class=phh>🎤 後半30分｜クロージング</div>
+    <div class=step>気づき</div>
+    <span class=say>規模は、順番を間違えると折れます。土地・人・販路・設備、どれから手を付けるかで結果が変わります。</span>
+    <div class=step>次の一手</div>
+    <span class=say>土地・人・販路・設備のうち、どこから手を付ければ折れないか、その順番を決めましょう。</span>
+    <div class=step>伴走の案内</div>
+    <span class=say>やりたいなら、順番に沿って拡大を一緒に進めて、判断ミスを防ぎます。月1＋LINEで。</span>
+    <div class=step>背中を押す → 締め</div>
+    <span class=say>規模拡大の判断ミスも体験済みです。折れない順番を、一緒に引きましょう。</span>
+  </div>
 </div></div>
 
-<div class=mini>各パターン同じ型＝①状況→②深掘り3問→③次の一手→④伴走→⑤クロージング。<br>数字（1反の利益額・収量など）は、ご主人様の実数で埋めると完成です。</div>
+<div class=mini>各タブ＝前半30分「聞く」／後半30分「クロージング」。<span class=say style="display:inline;border:none;background:none;padding:0">◯◯</span>や数字（1反の利益額・収量など）は、ご主人様の実数・相手の名前で埋めてください。</div>
 
 <script>
 var tabs=document.getElementById('tabs');
