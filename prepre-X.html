@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📋 台本ボード | プリプリ動画[X版] 30秒・売り先の問い（共感入口）</title>
+<style>
+* { box-sizing: border-box; }
+/* スマホDiscord 前提の縦長レイアウト：すべて大きめ */
+body {
+  font-family: 'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #f5f3ee;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 36px 28px 80px;
+  line-height: 1.8;
+  font-size: 22px;
+}
+.dashboard {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.title-bar h1 {
+  margin: 0 0 6px;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.35;
+}
+.title-bar .meta {
+  color: #777;
+  font-size: 17px;
+  display: block;
+  margin-top: 4px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0 32px;
+}
+.summary .stat {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.summary .stat .label {
+  font-size: 16px;
+  color: #777;
+}
+.summary .stat .value {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 4px;
+  color: #1a1a1a;
+}
+.timeline-intro {
+  font-size: 19px;
+  color: #555;
+  font-weight: 800;
+  margin: 0 0 20px;
+}
+.timeline-intro::before { content: "▼ 視聴者の旅路（上から下へ）"; }
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 26px 24px 32px;
+  margin-bottom: 18px;
+  position: relative;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.card .accent-bar {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 10px;
+  border-radius: 0 5px 5px 0;
+}
+.card.hook {
+  background: linear-gradient(180deg, #fff2e6 0%, #ffffff 55%);
+}
+.card.cta {
+  background: linear-gradient(180deg, #e9f9f1 0%, #ffffff 55%);
+}
+.card.appendix {
+  background: #ebe7dd;
+  color: #777;
+  padding: 16px 22px;
+}
+.card.appendix .headline { font-size: 22px; color: #777; font-weight: 700; }
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.card .num-tag {
+  font-size: 22px;
+  font-weight: 900;
+  color: #aaa;
+  font-family: 'SF Mono', Menlo, monospace;
+  letter-spacing: 0.02em;
+}
+.card.hook .num-tag { color: #ff6b35; }
+.card.cta  .num-tag { color: #06a77d; }
+.card .section-label {
+  display: inline-block;
+  font-size: 16px;
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.card .importance-badge {
+  font-size: 18px;
+  font-weight: 800;
+  color: #777;
+  margin-left: auto;
+}
+.card.hook .importance-badge { color: #d04612; }
+.card.cta  .importance-badge { color: #057354; }
+.card .headline {
+  font-size: 40px;
+  font-weight: 900;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin: 8px 0 6px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.card.hook .headline { color: #c93c08; }
+.card.cta  .headline { color: #057354; }
+.card .subline {
+  font-size: 21px;
+  color: #555;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.card .lead {
+  font-size: 23px;
+  color: #2a2a2a;
+  margin: 16px 0 6px;
+  line-height: 1.85;
+  font-weight: 500;
+}
+.card .meta-row {
+  margin-top: 18px;
+  font-size: 17px;
+  color: #888;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card .duration {
+  font-weight: 700;
+}
+.card .ng-flag {
+  background: #ffd6d6;
+  color: #b00020;
+  border-radius: 8px;
+  padding: 3px 12px;
+  font-size: 16px;
+  font-weight: 800;
+}
+.card .scroll-tag {
+  background: #eef4ff;
+  color: #3a5bd9;
+  border-radius: 8px;
+  padding: 3px 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.appendix-heading {
+  margin: 46px 0 14px;
+  font-size: 19px;
+  color: #888;
+  font-weight: 800;
+}
+
+/* Detail modal */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 24px;
+}
+.overlay.active { display: flex; }
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 760px;
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  padding: 22px 26px 26px;
+  position: relative;
+}
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: 0;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+}
+.modal h2 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.modal .body {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.75;
+  margin-top: 14px;
+  color: #1f1f1f;
+}
+.modal .meta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #6a6a6a;
+}
+@media print { .overlay { display: none !important; } }
+</style></head><body><div class="dashboard">
+<div class="title-bar"><h1>📋 プリプリ動画[X版] 30秒・売り先の問い（共感入口）</h1><span class="meta">date:2026-06-13 ·プリプリローンチ(X短尺30秒) ·出口=固定ポスト→LINE→個別相談(農業のゲームチェンジ) ·X38件分析:共感/迷い系が伸びる(経営ロジックは沈む)</span></div>
+<div class="summary"><div class="stat"><div class="label">総ブロック数</div><div class="value">6</div></div><div class="stat"><div class="label">総文字数</div><div class="value">442</div></div><div class="stat"><div class="label">推定尺(6字/秒)</div><div class="value">約1.2分</div></div><div class="stat"><div class="label">🎯 冒頭フック</div><div class="value">1 件</div></div><div class="stat"><div class="label">🔥 本論</div><div class="value">2 件</div></div><div class="stat"><div class="label">📣 CTA関連</div><div class="value">1 件</div></div><div class="stat"><div class="label">🚨 NG表現含有</div><div class="value">0 件</div></div></div>
+<div class="timeline-intro">▼ 構成タイムライン</div><div class="timeline"><span class="num-tag" style="background:#ff6b35;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#01 フック(問い)</span><span class="num-tag" style="background:#e63946;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#02 本題(核心1つ＋共感)</span><span class="num-tag" style="background:#9d4edd;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#03 余韻(答えを半分で切る)</span><span class="num-tag" style="background:#06a77d;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#04 CTA(URL直貼りしない)</span><span class="num-tag" style="background:#5d6d7e;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#05 Xテキスト投稿3本(ローテ)</span><span class="num-tag" style="background:#5d6d7e;color:#fff;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">#06 制作の必須要素(CPA)</span></div>
+<div class="card hook" onclick="openCard(1)"><div class="accent-bar" style="background:#ff6b35;"></div><div class="card-head"><span class="num-tag">#01</span><span class="section-label" style="background:#ff6b35;">0-3秒</span><span class="importance-badge">🎯 冒頭フック</span></div><div class="headline">フック(問い)</div><div class="lead">その苗、売り先は決まっていますか。</div><div class="meta-row"><span class="duration">⏱ 0-3秒/大テキスト＋発話</span></div></div>
+<div class="card" onclick="openCard(2)"><div class="accent-bar" style="background:#e63946;"></div><div class="card-head"><span class="num-tag">#02</span><span class="section-label" style="background:#e63946;">3-20秒</span><span class="importance-badge">🔥 本論</span></div><div class="headline">本題(核心1つ＋共感)</div><div class="lead">儲からない苗の正体は、品種でも、腕でもありません。<br>売り先が決まっていない苗です。<br>見た目は、健康な苗とまったく同じ。<br>違いが出るのは、収穫が近づいてからです。<br>僕も昔、それで失敗しました。</div><div class="meta-row"><span class="duration">⏱ 3-20秒</span></div></div>
+<div class="card" onclick="openCard(3)"><div class="accent-bar" style="background:#9d4edd;"></div><div class="card-head"><span class="num-tag">#03</span><span class="section-label" style="background:#9d4edd;">20-27秒</span><span class="importance-badge">🔥 本論</span></div><div class="headline">余韻(答えを半分で切る)</div><div class="lead">じゃあ、売り先をどう決めるか。<br>実は、順番があります。</div><div class="meta-row"><span class="duration">⏱ 20-27秒</span></div></div>
+<div class="card cta" onclick="openCard(4)"><div class="accent-bar" style="background:#06a77d;"></div><div class="card-head"><span class="num-tag">#04</span><span class="section-label" style="background:#06a77d;">27-30秒</span><span class="importance-badge">📣 CTA</span></div><div class="headline">CTA(URL直貼りしない)</div><div class="lead">続きは、プロフィールの固定ポストに置いています。</div><div class="meta-row"><span class="duration">⏱ 27-30秒</span></div></div>
+<div class="card appendix" onclick="openCard(5)"><div class="accent-bar" style="background:#5d6d7e;"></div><div class="card-head"><span class="num-tag">#05</span><span class="section-label" style="background:#5d6d7e;">付録</span></div><div class="headline">Xテキスト投稿3本(ローテ)</div></div>
+<div class="card appendix" onclick="openCard(6)"><div class="accent-bar" style="background:#5d6d7e;"></div><div class="card-head"><span class="num-tag">#06</span><span class="section-label" style="background:#5d6d7e;">付録</span></div><div class="headline">制作の必須要素(CPA)</div></div>
+</div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeCard()"><div class="modal">
+<button class="close-btn" onclick="closeCard()">×</button>
+<div id="modal-section" style="font-size:11px;color:#8a8a8a;margin-bottom:6px;"></div>
+<h2 id="modal-title" style="font-size:22px;"></h2>
+<div class="meta-row"><span class="section-label" id="modal-label" style="display:inline-block;color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;"></span>
+<span id="modal-chars"></span><span id="modal-importance"></span><span id="modal-ng"></span></div>
+<div class="body" id="modal-body"></div></div></div>
+<script>window.__BOARD__ = {"1": {"index": 1, "headline": "フック(問い)", "subline": "", "duration_hint": "0-3秒/大テキスト＋発話", "section_label": "0-3秒", "section_color": "#ff6b35", "raw_text": "その苗、売り先は決まっていますか。", "char_count": 17, "importance_label": "🎯 冒頭フック", "ng_terms": []}, "2": {"index": 2, "headline": "本題(核心1つ＋共感)", "subline": "", "duration_hint": "3-20秒", "section_label": "3-20秒", "section_color": "#e63946", "raw_text": "儲からない苗の正体は、品種でも、腕でもありません。\n売り先が決まっていない苗です。\n見た目は、健康な苗とまったく同じ。\n違いが出るのは、収穫が近づいてからです。\n僕も昔、それで失敗しました。", "char_count": 95, "importance_label": "🔥 本論", "ng_terms": []}, "3": {"index": 3, "headline": "余韻(答えを半分で切る)", "subline": "", "duration_hint": "20-27秒", "section_label": "20-27秒", "section_color": "#9d4edd", "raw_text": "じゃあ、売り先をどう決めるか。\n実は、順番があります。", "char_count": 27, "importance_label": "🔥 本論", "ng_terms": []}, "4": {"index": 4, "headline": "CTA(URL直貼りしない)", "subline": "", "duration_hint": "27-30秒", "section_label": "27-30秒", "section_color": "#06a77d", "raw_text": "続きは、プロフィールの固定ポストに置いています。", "char_count": 24, "importance_label": "📣 CTA", "ng_terms": []}, "5": {"index": 5, "headline": "Xテキスト投稿3本(ローテ)", "subline": "", "duration_hint": "", "section_label": "付録", "section_color": "#5d6d7e", "raw_text": "①公開日(問い×共感): 売り先が決まっていない苗、ありませんか。育て方は合っているのに、なぜか儲からない。その正体、動画にしました。固定ポストから。\n②2日後(相談・寄り添い): 売上が落ちた。人が抜けた。誰にも相談できない。その時が、一番危ない。\n③(撤退ライン): 拡大の前に、撤退ラインを先に決める。", "char_count": 154, "importance_label": "", "ng_terms": []}, "6": {"index": 6, "headline": "制作の必須要素(CPA)", "subline": "", "duration_hint": "", "section_label": "付録", "section_color": "#5d6d7e", "raw_text": "字幕必須(無音再生)・1行15字/最大2行。1枚目サムネ=冒頭の問い1枚絵。投稿本文は要約せず問いだけ。CTAは全部プロフ固定ポストに一本化(固定だけLINEリンク)。指標=再生数でなくプロフクリック→LINE登録数。動画は週2本/テキスト3本毎日。", "char_count": 125, "importance_label": "", "ng_terms": []}};</script>
+<script>
+    window.__BOARD__ = {
+      1: {"index": 1, "section_title": "📺 セクション1：オープニング（70秒 / 約420字）", "headline": "オープニング", "subline": "", "duration_hint": "70秒 / 420字", "section_label": "OP / 冒頭フック", "section_color": "#ff6b35", "raw_text": "100tから、おかげさまで、もうすぐ200tです。\n\nこれ、3年前の僕には、想像もできなかった、数字です。\n\n100t農家のイチロウです。\n\n愛知県で、農業をやっています。\n\n3年前、僕は、化学肥料を、毎年、同じ量、撒いていました。\n\nそれでも、なんとなく、収穫が落ちている気がしていました。\n\n理由が、わかりませんでした。\n\n土の見た目は、変わらない。\n\n天気のせいかと、思っていました。\n\nでも、違いました。\n\n土が、静かに、疲れていたんです。\n\nそこで、僕は、ある作業を、本気で見直しました。\n\nそれが、今日のテーマ、ソルゴーです。\n\nただし、です。\n\nただ蒔けばいい、ただ刈ればいい、そう思っている人がいたら、今日はそれを、根本から、覆します。\n\n僕の3年間の経験を、全部、お話しします。\n\n🆕 **<!-- v3.6追加：LINE特典チラ見せ（おむ太郎さん依頼書ベース：「農業のゲームチェンジ」動画） -->**\n\nあと、ひとつ、お知らせがあります。\n\n今日の話を聞いて、\n\n「自分の畑、何から手をつけたらいいんだろう」って、\n\n迷う方が、たぶん、出てきます。\n\nそんな方のために、\n\n公式LINEで、\n\n**「農業のゲームチェンジ」**という、\n\n15年・年間100t出荷の経験から、稼げる農業と詰まる農業を分けるたった1つの順番、\n\nこれをお話しした動画を、お渡ししています。\n\n概要欄から、LINE登録できます。\n\nただ、ですね、\n\nこれ、突然、やめてしまうかも、しれませんので、\n\n気になった方は、早めに、登録しておいてください。\n\n今日の話を、最後まで、聞き終わってから、登録してもらえれば、いいです。\n\n> → スライド：黒バック「**ソルゴー、本当のトリセツ。**」「100t農家のイチロウ」+「🎁 概要欄：公式LINE→『農業のゲームチェンジ』動画プレゼント」\n\n---", "char_count": 728, "importance": "hook", "importance_label": "🎯 冒頭フック", "ng_terms": ["たぶん", "だろう"], "scroll_count": 0},2: {"index": 2, "section_title": "🔍 セクション2：自己診断 5問（90秒 / 約500字）", "headline": "自己診断 5問", "subline": "", "duration_hint": "90秒 / 500字", "section_label": "自己診断", "section_color": "#ff8c42", "raw_text": "質問が、5つあります。\n\n最初の3つは、すぐ気づくサイン。\n\nあとの2つは、見落としやすい、深いサインです。\n\n質問1、あなたの畑、雨のあと、水がいつまでも、引きませんか？\n\n質問2、握った土が、ガチッと固まりますか？それとも、ふんわり崩れますか？\n\n質問3、去年と比べて、作物のサイズ、なんとなく小さくなっていませんか？\n\n（間）\n\nここまで、表面的に気づくサイン。\n\n質問4、畑のミミズ、最近、見ましたか？\n\nこれ、すごく大事です。ミミズは、土の健康のバロメーターです。\n\n質問5、土を掘り返した時の、匂い。発酵してる、ふくよかな匂い、しますか？それとも、無臭、もしくは、酸っぱい匂いですか？\n\n（間）\n\n5つのうち、ひとつでも当てはまったら、あなたの畑、土が、静かに、疲れています。\n\n3つ以上当てはまったら、要注意です。\n\nこれ、見落としている農家、多いです。\n\n僕も、3年前は、全部、当てはまっていました。\n\n> → スライド：「**5つの自己診断**」5問を順番に表示\n\n---", "char_count": 409, "importance": "hook", "importance_label": "🎯 冒頭フック", "ng_terms": [], "scroll_count": 0},3: {"index": 3, "section_title": "⚠️ セクション3：危機感（化学肥料依存の罠）（180秒 / 約1,000字）", "headline": "危機感", "subline": "化学肥料依存の罠", "duration_hint": "180秒 / 1,000字", "section_label": "危機感", "section_color": "#e63946", "raw_text": "化学肥料、便利です。\n\n毎年同じように撒けば、毎年同じように、ある程度の収穫は、できます。\n\n僕も、20年以上、化学肥料を中心に、やってきました。\n\nそれで、ある程度の収量は、ありました。\n\nここで、大事なことを、伝えさせてください。\n\n「化学肥料依存」って、悪く言われることが、あります。\n\nでも、化学肥料が悪いんじゃ、ありません。\n\nむしろ、僕は、化学肥料に、すごく感謝しています。\n\n化学肥料は、僕らの生産性を、爆上げしている、貴重な資源です。\n\nちょっと、化学のお話、します。\n\n有機物、堆肥や緑肥に含まれる栄養も、実は、最終的には、土の中で、分解されて、**無機物の形**になってから、植物の根に、吸収されます。\n\nこれ、農学の基本です。\n\n化学肥料は、その「無機物の状態」を、ダイレクトに、植物に、与えることができる。\n\nつまり、土の中での分解の工程と、時間を、大幅に削減できる、素晴らしい能力を持っています。\n\n省力化。\n\nこれも、農業を続けていく上で、めちゃくちゃ、大事です。\n\n人手も時間も、限られていますから。\n\nだから、化学肥料は、農業の現代化に、欠かせない、本当に、貴重な、資源です。\n\nここを、勘違いしないでください。\n\nただし、問題は、別のところにあります。\n\n**化学肥料だけで、できる**と、思い込むこと。\n\nこれが、問題なんです。\n\n結局、土に、有機物がなくなる。\n\nそうすると、作物が、育ちにくくなる。\n\nこれは、耕作放棄地を開拓するときも、同じです。\n\n「自然のまま」って、いい表現をしてもらえることがありますが、自然のままで流通する作物を作るのは、なかなか、難しい。\n\n自然農は、別です。\n\n自然農は、サイズを求めない、あり方の農業ですから。\n\nただ、僕らが、流通させる農業は、違います。\n\n食糧自給率、品質、味、これらを、かなり高いレベルで、両立させる必要があります。\n\n量も、そうです。\n\n僕の出荷なんて、1トンからの出荷ですが、1トンの出荷だろうが、品質は、良くなきゃ、いけません。\n\nこれを達成するためには、高いレベルで、栄養バランスを、畑全体を、整えなきゃ、いけない。\n\n化学肥料は、ここで、めちゃくちゃ、役に立つ。\n\n省力化、時間短縮、これらの力を、最大化して使う。\n\nただし、化学肥料だけでは、足りない。\n\nそこに、有機物も、欲しい。\n\nだから、**化学肥料の力を最大化 + 足りない有機物を緑肥で補う**。\n\nこれが、僕にとっての、最適解です。\n\nこのイメージ、持っていてください。\n\nこれから先の話は、化学肥料を否定する話じゃ、ないです。\n\n化学肥料の力を、最大化するために、緑肥で、土を、底上げする、話です。\n\nただ、です。\n\n化学肥料だけに頼り続けると、土の中の生き物が、減っていきます。\n\n土に住んでいる、微生物、ミミズ、菌類。\n\nこれらが、本来、土を耕してくれています。\n\n機械よりも、化学肥料よりも、ずっと深いところで。\n\nその彼らが、いなくなると、どうなるか。\n\n土が、固まります。\n\n水がたまります。\n\n根が、伸びなくなります。\n\nそして、作物のサイズが、毎年、少しずつ、小さくなっていきます。\n\n年単位で、土が痩せていきます。\n\n気づいた時には、戻すのに、時間がかかります。\n\n化学肥料は、悪じゃありません。\n\n僕も、今でも、使っています。\n\nただし、化学肥料**だけ**に頼ると、土が、疲弊します。\n\n化学肥料は、即効性のある「給料」のようなもの。\n\n土を健康にする、「資産」じゃないんです。\n\n「給料」だけで、生活していると、貯金が、増えません。\n\n「資産」がない状態が、続くと、いつか、生活が、行き詰まります。\n\n土も、同じです。\n\n化学肥料は、その日の収穫に効きますが、土の体質改善には、ならない。\n\n[要：ご主人様取材：3年前、土が疲れていることに気づいた、具体的なきっかけ・エピソード]\n\n僕は、3年前、そのことに、気づきました。\n\n> → スライド：「**化学肥料だけだと、土は痩せる**」+ 「給料 vs 資産」の対比図\n\n---", "char_count": 1571, "importance": "core", "importance_label": "🔥 本論", "ng_terms": ["だろう"], "scroll_count": 0},4: {"index": 4, "section_title": "👨‍🌾 セクション4：プロ登場・3年間ストーリー（90秒 / 約500字）", "headline": "プロ登場・3年間ストーリー", "subline": "", "duration_hint": "90秒 / 500字", "section_label": "プロ登場", "section_color": "#9d4edd", "raw_text": "僕は、100t農家のイチロウです。\n\n愛知県で、農業をやっています。\n\n3年前の僕の、年間出荷量は、100tでした。\n\n今は、おかげさまで、もうすぐ200t、です。\n\nその間、肥料を倍にしたわけでも、面積を倍にしたわけでも、ありません。\n\n僕がやったのは、土を、変えたことです。\n\n具体的には、化学肥料だけだった土作りを、緑肥を組み合わせた土作りに、変えました。\n\nその中心が、今日のテーマ、ソルゴーです。\n\n3年前、緑肥は、面倒くさい、と思っていました。\n\n種代がかかる。\n\n刈り倒す手間がかかる。\n\nすき込みも大変。\n\n「やっただけの価値があるのか？」と、ずっと、半信半疑でした。\n\nなぜ、緑肥に、本気で取り組むことにしたか。\n\n理由は、ひとつ、です。\n\n化学肥料だけだと、**安定しない**。\n\n化学肥料の力で、ある程度の収量は、出ます。\n\nただ、いい年も、悪い年も、ある。\n\n天気の影響、土の状態、色々な要素で、結果が、ぶれる。\n\n僕が、欲しいのは、安定です。\n\n安定して、高いレベルで、収穫できる畑。\n\nそれを作るには、化学肥料だけじゃ、足りない。\n\n土そのものを、整える必要がある。\n\n土の、団粒化、有機物の貯蔵、地力窒素、これら全部が、整って、初めて、\n\n高いレベルで、安定する。\n\nその答えが、緑肥でした。\n\nただ、3年やって、わかったことがあります。\n\n土の状態が、明らかに、違う。\n\nそして、出荷量が、本当に、伸びる。\n\nしかも、毎年、繰り返していくと、年々、土が、良くなっていく。\n\nこれは、僕の畑で、起きていることです。\n\n> → スライド：「**100t → もうすぐ200t**」「変えたのは土だけ」+ ご主人様の畑写真\n\n---", "char_count": 660, "importance": "core", "importance_label": "🔥 本論", "ng_terms": [], "scroll_count": 0},5: {"index": 5, "section_title": "🌱 セクション5：ソルゴー3兄弟（深掘り版）（300秒 / 約1,650字）", "headline": "ソルゴー3兄弟", "subline": "深掘り版", "duration_hint": "300秒 / 1,650字", "section_label": "本論", "section_color": "#2a9d8f", "raw_text": "ソルゴーが土に効く理由、3つあります。\n\nこれ、僕が「ソルゴー3兄弟」と呼んでいるものです。\n\nひとつずつ、深く、説明します。\n\n### 長男、地力窒素を作る。\n\nソルゴーは、深いところまで、根を伸ばすと、言われています。\n\n実際の深さは、正確には、わかりません。\n\n土の中、目に見えませんから。\n\nただ、確実に、土は、野菜ができる状態に、近づいていきます。\n\nこれは、僕の畑で、実感していることです。\n\nソルゴーの根は、土の奥のリン酸、カリ、そして、空気中の窒素、これを葉と茎に、引き上げます。\n\n刈り倒して、土に返すと、地表近くに、栄養が戻ります。\n\nこれが、地力窒素、です。\n\n地力窒素という言葉、農学の専門用語です。\n\n化学肥料の窒素とは違って、土の中で、ゆっくり、長く効きます。\n\n化学肥料の窒素は、撒いてすぐ効く。でも、2-3週間で消えます。\n\n地力窒素は、撒けないけど、ソルゴーを通じて、土に貯まる。\n\nそして、数ヶ月、数年単位で、ゆっくり、ゆっくり、野菜に効きます。\n\n野菜の根が、ストレスなく、栄養を吸えるようになる。\n\nこれが、サイズアップの、第一の理由です。\n\n> → スライド：「**長男：地力窒素を作る**」根のイラスト＋給料 vs 資産\n\n### 次男、土を物理的にほぐす。\n\nソルゴーの根は、太い。\n\nしかも、深い。\n\nこれが土の中を、ぐしゃぐしゃに、ほぐしてくれます。\n\n機械じゃ届かない深さまで、根が貫通します。\n\nすき込んだあと、根が腐って、空洞ができます。\n\nそこに、水も、空気も、流れます。\n\nふかふかの土の正体は、これです。\n\nここで、プロの専門用語、ひとつ、紹介します。\n\n**団粒化（だんりゅうか）**、です。\n\n土の粒子が、小さな塊になって、その塊と塊の間に、空気や水が、入っていく状態。\n\nこれが、団粒化された土。\n\n土壌物理性の、専門用語です。\n\nソルゴーの根が、土を貫通して、団粒化を、進めてくれる。\n\n化学肥料を撒いた畑と、ソルゴーを入れた畑、土を掘ってみると、明らかに、見た目が、違います。\n\n化学肥料だけの畑は、地表は綺麗だけど、深いところは、ぎっしり詰まってる。\n\nソルゴーを入れた畑は、地表も深いところも、ふかふか。\n\n僕の畑、本当に、すごいんです。\n\n耕した時点で、サラサラサラじゃなくて、**コロコロコロ**っていう土になる。\n\nこれ、団粒化が進んでる、証拠です。\n\nコロコロの粒の中に、栄養と水分が、保たれて、その隙間を、根が、ストレスなく、伸びていく。\n\nこれ、化学肥料だけの土では、絶対に、出ない感触です。\n\n野菜の根が、自由に、伸びていける。\n\nこれが、見えない、けど、確実な、変化です。\n\n> → スライド：「**次男：土を物理的にほぐす（団粒化）**」「サラサラ」vs「**コロコロ**」の比較\n\n### おまけ：ミミズについての、僕の仮説\n\nここで、おまけの話。\n\n自己診断で、ミミズの話、しました。\n\n一般的に、農薬と化学肥料を使うと、ミミズがいなくなる、と言われます。\n\nただ、僕の体験では、農薬と化学肥料を使っても、ミミズは、います。\n\nそして、これは、僕の体験談として、聞いてほしいんですが、\n\nミミズが多くいる時って、有機物が、畑に、たくさんある時です。\n\nミミズは、有機物を分解しながら、生きていますから。\n\n逆に、有機物が、ちゃんと分解されて、こなれてきて、土が完成すると、ミミズが、減ってきます。\n\nつまり、ミミズが、減ってきたら、悪いんじゃなくて、土が、こなれた可能性もあります。\n\nこれ、僕の仮説で、まだ裏付けはありません。\n\nただ、自分の畑を、3年間見続けて、感じていることです。\n\n> → スライド：「**ミミズの逆説：減ったら悪い、とは限らない**」（プロの体験談として）\n\n### 三男、雑草を抑える。\n\nソルゴーは、めちゃくちゃ伸びます。\n\nものすごい速度で、人の背丈を、軽く超えます。\n\nその下、太陽が届きません。\n\n雑草が、生えにくくなります。\n\nしかも、ソルゴーの根からは、他の植物の発芽を抑える成分が、出ます。\n\nこれ、アレロパシー、といいます。農学の専門用語です。\n\nただし、草が完全に生えないわけじゃありません。\n\nコツは、ソルゴーを、一斉に発芽させること。\n\nバラバラに、ぼつぼつと、発芽すると、その隙間に、雑草が、先に根を張ります。\n\nそうなると、ソルゴーが、雑草に、負けます。\n\n逆に、一斉に発芽させれば、ソルゴーが、優勢になる。\n\n雑草の方が、ソルゴーに、負けていく。\n\nこれが、雑草抑制の、本当のポイントです。\n\n雑草対策、農家にとって、本当に大きな仕事です。\n\n化学的な除草剤を使う方法もありますが、土の生き物にダメージ。\n\n物理的に草刈りする方法もありますが、人手と時間がかかる。\n\nソルゴーの一斉発芽は、生き物を傷つけず、手間も最小限。\n\nこれが、3兄弟の中で、地味だけど、年間の労働時間を、最も減らしてくれる、要素です。\n\n> → スライド：「**三男：雑草を抑える（一斉発芽が鍵）**」アレロパシー＋一斉発芽の絵\n\n3兄弟、揃って働いて、初めて、ソルゴーは、効きます。\n\nひとつでも欠けると、効果は、半分以下です。\n\n> → スライド：「**3兄弟揃って初めて効く**」3アイコン並び\n\n---", "char_count": 2041, "importance": "core", "importance_label": "🔥 本論", "ng_terms": [], "scroll_count": 0},6: {"index": 6, "section_title": "📅 セクション6：ソルゴー1年タイムライン 🆕（200秒 / 約1,100字）", "headline": "ソルゴー1年タイムライン", "subline": "", "duration_hint": "200秒 / 1,100字", "section_label": "タイムライン", "section_color": "#0077b6", "raw_text": "ソルゴーを取り入れた畑の、1年は、こうです。\n\n僕の地域、愛知を基準に、お話しします。\n\n### 5月：種まき\n\nゴールデンウィーク明け、5月10日以降。\n\n気温が、15度を超えて、安定したら、種を蒔きます。\n\n種の量、株間の話は、後で詳しくします。\n\n蒔いてから、3日〜1週間で、芽が出ます。\n\nここで、一斉に出るかどうかが、勝負です。\n\n### 6月：生育期\n\n6月、ソルゴーは、すごい速度で伸びていきます。\n\n毎週、目に見えて、背丈が変わります。\n\nこの時期、何もしなくていいです。\n\n放置です。\n\n### 7月：穂が出る、刈り取り、すき込み\n\n7月、ソルゴーに、穂が出てきます。\n\nこれが、刈り取りのサイン。\n\n刈り倒して、すき込みに、入ります。\n\nまずチョッパーで、細かく粉砕。\n\nそれからロータリーで、土に混ぜ込む。\n\n順番が、命です。逆だと、機械が、絡まります。\n\nすき込んだあと、1週間は、土がぐちゃぐちゃ。\n\nここまでは、もう、皆さん、ご存知の話です。\n\n### 7月末〜8月：1ヶ月の準備期間（隠れた肝心ポイント）\n\nすき込んだあと、1ヶ月、土を、準備します。\n\nただ、放置するだけじゃ、ありません。\n\n1ヶ月の間に、何回か、耕し合わせが、必要です。\n\nソルゴーの根、葉、茎を、土に均一に、分解させていきます。\n\n何度か、耕しを入れることで、有機物が、土の中で、ちゃんと、馴染んでいきます。\n\nここを、丁寧にやることで、土が、完成します。\n\nこれ、見落としている人、多いです。\n\nただ放置するだけじゃ、足りない。\n\n何回かの、耕し合わせが、隠れた、肝心ポイントです。\n\n### 8月：土が完成、元肥、植え付け準備\n\n8月、土ができてきます。\n\n握ってみると、ふんわり、崩れる。\n\n色も、深くなる。\n\n匂いも、ふくよかになる。\n\nここで、元肥を、撒きます。\n\nソルゴーで作った土に、必要な栄養を、足して、次の作物の準備、完了です。\n\n### 9月以降：定植、成長、収穫\n\n土の準備が、できたら、次の作物を、植え付けます。\n\n僕の場合、キャベツの定植です。\n\nソルゴーで作った土に、苗を植え込みます。\n\n定植から、収穫まで、ストレスのない成長を、見守ります。\n\nそして、冬から春にかけて、収穫期。\n\nここで、ソルゴーの本当の成果が、出ます。\n\nサイズが、大きい。\n\n形が、揃っている。\n\nそして、出荷量が、伸びる。\n\n> → スライド：「**ソルゴー1年タイムライン**」5月〜翌春の図解＋7月-8月の耕し合わせを強調\n\nこれが、僕の畑の、1年です。\n\n5月にソルゴーの種を蒔く。\n\nこれが、翌年の収穫を、決めます。\n\nそして、7月から8月の、1ヶ月の準備期間。\n\nここの、丁寧さ、これが、ソルゴーを、本当に効かせる、隠れたコツです。\n\n🆕 **<!-- v3.6追加：中盤の自然な橋渡し（動画17-18分地点／おむ太郎さん依頼書ベース） -->**\n\nここまで聞いて、\n\n「自分の畑、今どのステージにあるんだろう」って、\n\n思った方、いるかもしれません。\n\nソルゴーを入れる段階なのか、\n\nそれとも、その前に、\n\n販路や、出荷の流れを、整える段階なのか、\n\nこれ、人によって、全然、違います。\n\nそういう「自分はどこから手をつけるべきか」が、\n\nちょっとでも、気になった方のために、\n\n公式LINEで、\n\n**「農業のゲームチェンジ」**という、\n\n稼げる農業と詰まる農業を分けるたった1つの順番、\n\nこれを15年の経験から正直にお話しした動画を、お渡ししています。\n\n概要欄から、LINE登録、できます。\n\nただ、これも、突然、やめてしまうかも、しれませんので、\n\n気になった方は、後で、登録しておいてください。\n\n今日の話を、最後まで聞き終わってから、登録してもらえれば、いいです。\n\n> → スライド：「🎁 **概要欄：公式LINE→『農業のゲームチェンジ』動画プレゼント**」\n\n---", "char_count": 1494, "importance": "core", "importance_label": "🔥 本論", "ng_terms": ["だろう"], "scroll_count": 0},7: {"index": 7, "section_title": "🌾 セクション7：キャベツと白菜への効果 🆕（90秒 / 約500字）", "headline": "キャベツと白菜への効果", "subline": "", "duration_hint": "90秒 / 500字", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "ソルゴーを入れた畑、何の作物にも、効きます。\n\n僕は、キャベツと白菜が中心ですが、両方とも、確実に、効果があります。\n\n### キャベツへの効果\n\nキャベツは、結球するために、長い期間、たくさんの栄養が必要です。\n\n化学肥料だけで作ると、最初は元気でも、後半に栄養が切れて、サイズが伸びきらない、ということが、よくあります。\n\nソルゴーで地力窒素が貯まっている土だと、結球の最後まで、ストレスがない。\n\nサイズが、大きく、形が、揃う。\n\nこれが、僕の畑で、実感していることです。\n\n### 白菜への効果\n\n白菜も、同じです。\n\n白菜は、葉を巻き始めてからの、後半が、勝負です。\n\nここで栄養が切れると、巻きが、緩くなったり、サイズが小さくなったりする。\n\nソルゴーで作った土だと、後半まで、栄養が、続きます。\n\nサイズの大きい、ぎっしり詰まった白菜ができます。\n\n[要：ご主人様取材：他の作物への効果は、別動画で扱う予定]\n\nソルゴーは、特定の作物だけじゃなく、土そのものを、底上げします。\n\n土が変われば、何を植えても、変わる。\n\nこれが、ソルゴーの、本当の価値です。\n\n> → スライド：「**ソルゴー、キャベツと白菜への効果**」結球サイズ比較\n\n---", "char_count": 488, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0},8: {"index": 8, "section_title": "📊 セクション8：YouTube姿勢（45秒 / 約260字）", "headline": "YouTube姿勢", "subline": "", "duration_hint": "45秒 / 260字", "section_label": "姿勢表明", "section_color": "#8338ec", "raw_text": "YouTubeを続けていて、感じることがあります。\n\n再生回数が、爆発的に伸びる動画と、伸びない動画があります。\n\nソルゴーみたいな、ニッチで、深い話は、再生数が、伸びにくいです。\n\nそれでも、見てくれる人は、ちゃんと、見てくれる。\n\nコメント欄に、農家の方から、参考になります、と、書いてもらえる。\n\nそれが、僕にとって、何より、励みになります。\n\n再生数より、刺さるか。\n\nそれを大事にして、これからも、続けます。\n\n> → スライド：「**再生数より、刺さるか**」シンプルテキスト\n\n---", "char_count": 229, "importance": "core", "importance_label": "🔥 本論", "ng_terms": [], "scroll_count": 0},9: {"index": 9, "section_title": "🎯 セクション9：今日からできる具体策（5落とし穴版）（360秒 / 約2,000字）", "headline": "今日からできる具体策", "subline": "5落とし穴版", "duration_hint": "360秒 / 2,000字", "section_label": "危機感", "section_color": "#e63946", "raw_text": "ここからは、実践編です。\n\nソルゴーを失敗する、5つの落とし穴と、その対策です。\n\n### 落とし穴1：種まきの時期を、外す。\n\nソルゴーは、暖かい時期じゃないと、発芽しません。\n\n愛知でいうと、ゴールデンウィーク明け、5月10日以降が、目安です。\n\n寒い地域、東北や北海道は、6月入ってから。\n\n逆に、九州や沖縄は、4月末から、いけます。\n\nご自分の地域、気温15度を超える、安定した日付、これを目安にしてください。\n\n時期を早めると、発芽しない。\n\n時期を遅らせると、夏の暑さで、植え付け失敗。\n\n数日のズレで、結果が、変わります。\n\n> → スライド：「**落とし穴1：種まき時期**」地域別カレンダー表\n\n### 落とし穴2：株間を、間違える。\n\nこれ、僕が一番、伝えたいことです。\n\n種まきの間隔、株間、本当に大事です。\n\n僕の目安は、こうです。\n\nトウモロコシの太さに育てたいなら、株間、10センチ。\n\n親指の太さに育てたいなら、株間、5センチ。\n\n数字の根拠、説明します。\n\n株間が広いと、栄養が分散しません。1本1本が太く育ちます。\n\nただし、本数が少ないので、土の表面に届く根の数も、少ない。\n\n株間が狭いと、本数が多くなって、根が、地表全体に行き渡ります。\n\nただし、1本1本は、細くなる。\n\nどっちが正解か。\n\nこれは、目的による。\n\n地表のほぐしを優先するなら、5センチ。\n\n深い根の貫通を優先するなら、10センチ。\n\nちなみに、僕は、5センチが基本です。\n\n地表を最優先で、ほぐしたいからです。\n\n> → スライド：「**株間の選び方**」5cm親指 vs 10cmトウモロコシ比較図\n\n### 落とし穴3：一斉発芽を、外す。\n\nこれ、雑草対策の、肝心ポイントです。\n\nソルゴーが、バラバラに発芽すると、その隙間に、雑草が、先に根を張ります。\n\n対策は、種を蒔く前に、土を均一にすること。\n\n地温のムラ、踏み固めの差、これらを、できる限り、揃える。\n\nそして、種を蒔いたあと、均一に、軽く土をかける。\n\n雨が降って、発芽スイッチが、入ったら、一斉に、発芽します。\n\nここで、ソルゴーが優勢になる。\n\n雑草が、ソルゴーに、負けていく。\n\n[要：ご主人様取材：実際に一斉発芽させるための地ならし方法、種まき機の使い方等]\n\n> → スライド：「**落とし穴3：一斉発芽**」均一性の図解\n\n### 落とし穴4：すき込みの順番を、間違える。\n\nこれ、機械の順番です。\n\n正解は、チョッパー、その後、ロータリー、です。\n\n逆にやると、悲惨です。\n\nなぜか。\n\nソルゴー、刈り倒した状態だと、長い茎が、ぼうぼうに、生えています。\n\nこれを、ロータリーから入れたら、機械が、絡まります。\n\n止まります。\n\nなので、まずチョッパーで、細かく粉砕する。\n\nそれから、ロータリーで、土に混ぜ込む。\n\n順番が、命です。\n\nそして、すき込んだあと、1週間は、土がぐちゃぐちゃです。\n\nこれ、ヤバいと思って、いじらないで、ください。\n\n放置です。\n\n放置していると、1ヶ月経ったところで、土が、ふかふかに、変わります。\n\nこれが、ソルゴーの、本当の効果です。\n\n> → スライド：「**チョッパー → ロータリー、順番厳守**」「すき込み後1週間→1ヶ月」\n\n### 落とし穴5：10円ハゲを、放置する。\n\nこれ、種まきしたあと、なぜか、10円玉サイズの円形に、発芽しない場所が、できることがあります。\n\n原因は、種の偏り、土の踏み固め、地温のムラ、色々です。\n\n対策は、10円ハゲを見つけたら、その場所だけ、追い蒔きしてください。\n\n10粒くらいで、十分です。\n\nこれで、地表の被覆率が、揃います。\n\n雑草に負けないための、一斉発芽にも、繋がります。\n\n10円ハゲ、放置すると、そこから雑草が、ぶわっと、生えてきます。\n\n見つけたら、即、追い蒔き。\n\nこれが、地味だけど、確実な、勝ち筋です。\n\n> → スライド：「**落とし穴5：10円ハゲは追い蒔きで補修**」\n\n---", "char_count": 1532, "importance": "core", "importance_label": "🔥 本論", "ng_terms": [], "scroll_count": 0},10: {"index": 10, "section_title": "🚨 セクション10：失敗事例コーナー 🆕（180秒 / 約1,000字）", "headline": "失敗事例コーナー", "subline": "", "duration_hint": "180秒 / 1,000字", "section_label": "失敗パターン", "section_color": "#f4a261", "raw_text": "ここで、僕の3年間で、やっちゃった失敗、お話しします。\n\nこれ、聞くと、絶対、同じ失敗、避けられます。\n\n### 失敗1：すき込み直後に、定植しようとした（致命的な落とし穴）\n\n最初の年、僕は、すき込みのあと、すぐに次の作物を、植えたくなりました。\n\n土がぐちゃぐちゃに見える状態で、「これじゃ、植え付けできない」と。\n\n慌てて、すぐにロータリーで均し直し、定植しました。\n\n結果、苗が、根を張れず、半分くらいが、枯れました。\n\nなぜか。理由、説明します。\n\nソルゴーをすき込んだ直後、茎が、枝みたいに、硬く残っています。\n\nこれが、土の中で、植え付けの邪魔をする。\n\n苗の根が、伸びる場所を、見つけられない。\n\nそれだけじゃ、ありません。\n\nもっと、深い理由があります。\n\n茎を分解するために、土の中の窒素が、使われてしまうんです。\n\n微生物が、硬い茎を、分解しようとして、土の窒素を、消費する。\n\nつまり、せっかくソルゴーで作った地力窒素が、茎の分解に、奪われる。\n\n苗に、栄養が、届かなくなる。\n\nこれが、すき込み直後の、致命的な落とし穴です。\n\nだから、すき込んだあと、1ヶ月、土を準備する必要があります。\n\n何回か、耕しを入れて、茎の分解を、進める。\n\n茎が完全に分解されたら、土の窒素が、解放される。\n\nそこで、初めて、定植です。\n\nこの我慢が、命だと、痛感しました。\n\n### 失敗2：種の量を、ケチった。\n\n2年目、種の量を、ケチりました。\n\n1反あたりの種の量、推奨より、少なめにしました。\n\n結果、発芽がまばらになり、雑草が、ボワッと生えました。\n\n雑草を取るのに、結局、時間と労力が、かかりました。\n\n種代をケチった分、人件費で、何倍も、損しました。\n\n種の量は、ケチっちゃダメです。\n\n[要：ご主人様取材：実際の種の量・1反あたりの推奨量]\n\n### 失敗3：すき込みのタイミングを、見誤った。\n\n3年目、ソルゴーが大きくなりすぎて、すき込みが遅れました。\n\n刈り倒したけど、茎が太すぎて、チョッパーで処理に時間がかかった。\n\nロータリーをかけても、完全に混ざらない。\n\n結果、翌年の畑が、しばらく、ボコボコの状態が、残りました。\n\nソルゴーは、伸ばしすぎちゃダメです。\n\n人の背丈を、ちょっと超えたところで、すぐに、すき込み。\n\nこれが、ベストタイミングです。\n\n> → スライド：「**3つの失敗事例**」やってはいけない！警告コーナー\n\nこれら、僕の失敗から、皆さんは、避けてください。\n\n3年間で、確実に、学んだことです。\n\n---", "char_count": 993, "importance": "core", "importance_label": "🔥 本論", "ng_terms": [], "scroll_count": 0},11: {"index": 11, "section_title": "🔑 セクション11：CTA橋渡し（v3.6 渇望MAX書き換え）（150秒 / 約900字）", "headline": "CTA橋渡し", "subline": "v3.6 渇望MAX書き換え", "duration_hint": "150秒 / 900字", "section_label": "CTA 誘導", "section_color": "#06a77d", "raw_text": "🆕 **<!-- v3.6 全書き換え：渇望MAX 2段ロケット型・断言型 -->**\n\nここまで聞いて、自分の畑にソルゴー、やってみよう、\n\nそう思った方がいたら、本当に、嬉しいです。\n\nただ、です。\n\nここで、ひとつ、伝えさせてください。\n\n僕が今日話したのは、僕の畑での、僕のやり方、です。\n\nソルゴーの効果が出るかどうかは、\n\nあなたの畑の、面積、\n\n土壌の質、\n\n作っている作物の種類、\n\n出荷の目標量、\n\nそして、今あなたが、何で困っているか、\n\nこれらによって、変わります。\n\n例えば、粘土質の土と、砂質の土で、ソルゴーの効き方は、違います。\n\n例えば、キャベツ中心の畑と、ナス中心の畑で、ソルゴーのすき込みタイミングは、変わります。\n\n例えば、1反でやる人と、10反でやる人で、種の量、機械の使い方、すべて違います。\n\nプロの農家は、必ず、出荷計画から、逆算します。\n\n10t出したい人と、100t出したい人で、土作りの戦略は、全然、違います。\n\n10t出したい人は、ソルゴーを年1回でも十分。\n\n100t出したい人は、ソルゴーと他の緑肥を組み合わせて、年中、土を育てる必要がある。\n\nつまり、です。\n\n**今日の話を、自分の畑に翻訳する作業は、この動画だけでは、できません。**\n\nこれが、農業の、難しさです。\n\nそして、ここから先は、僕が、お手伝いできる部分です。\n\n2段階で、用意してあります。\n\n### 1段目：公式LINE → 「農業のゲームチェンジ」動画プレゼント\n\nまず、概要欄から、\n\n公式LINEに、登録してください。\n\n登録すると、すぐに、\n\n**「農業のゲームチェンジ」**という動画を、お渡しします。\n\nこれ、僕が15年、年間100t出荷を続けてきた経験から、\n\n「稼げる農業と詰まる農業を分ける、たった1つの順番」を、\n\n正直に、お話しした動画です。\n\nソルゴーの話の、もうひとつ深いところ、\n\n「なぜ、あの頃の自分は、稼げなかったのか」を、\n\n正面から、語っています。\n\nLINEに登録するだけ、それで、いいです。\n\nただ、ですね、\n\nこのプレゼント動画、\n\n僕の事情で、突然、やめてしまうかも、しれません。\n\n「あ、気になる」と思った方は、\n\n早めに、登録だけ、しておいてください。\n\n登録さえしておけば、動画は、受け取れます。\n\n### 2段目：個別相談（LINEで「個別相談」と送るだけ）\n\n動画を見て、\n\n「自分の畑に合わせて、戦略を組みたい」、\n\nそう思った方は、\n\nLINEで、**「個別相談」**って、\n\n3文字、送ってください。\n\nそうすると、自動で、\n\n相談の予約URLが、返ってきます。\n\nそこから、日時を選ぶだけ。\n\n相談は、無料です。\n\n売り込みも、押し付けも、ありません。\n\n「自分の場合、今、何をすべきか」、\n\n一緒に、整理する場所です。\n\n「相談する勇気がない」、\n\nそう思った方は、\n\nまず、登録だけで、いいです。\n\nLINEで、定期的に、\n\n「動画とプレゼントだけで結果を出した方はいません」とか、\n\n「情報を集めれば集めるほど動けない、その本当の理由」とか、\n\nそんなお話を、お送りしています。\n\n3日後あたりに、\n\n「相談、してみようかな」って、\n\n自然に思えるタイミングが、来るかもしれません。\n\nその時、3文字、送ってください。\n\n> → スライド：「🎁 **2段階で用意**」「1段目：公式LINE→『農業のゲームチェンジ』動画」「2段目：LINEで『個別相談』3文字」+ 概要欄リンク\n\n---", "char_count": 1343, "importance": "cta", "importance_label": "📣 CTA", "ng_terms": [], "scroll_count": 0},12: {"index": 12, "section_title": "🌾 セクション12：締め（120秒 / 約700字）", "headline": "締め", "subline": "", "duration_hint": "120秒 / 700字", "section_label": "締め", "section_color": "#118ab2", "raw_text": "ソルゴーは、3兄弟、揃って初めて、効きます。\n\n種まき、株間、すき込み、この3つを、順番通り、丁寧にやれば、\n\n1年で、土がふかふかになります。\n\n3年で、出荷量が、変わります。\n\n僕の畑、100tから、もうすぐ200tに、なります。\n\nこれが、ソルゴーの、本当の効果です。\n\n土が変われば、3年後の自分が、変わります。\n\n今日、種を蒔く一袋が、3年後の畑を、決めます。\n\n3年は、長く感じるかもしれません。\n\nでも、土が痩せた状態を、放置している3年と、\n\nソルゴーで土を育てている3年は、\n\n3年後に、全然違う、収穫量と、生活を、もたらします。\n\n僕は、その実感を、持っています。\n\n最後に、ひとつ、お話しさせてください。\n\n僕の動画、いろんな方が、見てくださっています。\n\n現役で農業をやっている方。\n\n新規就農を考えている方。\n\n家業の畑を、引き継ぐかどうか、悩んでいる方。\n\nありがたいことに、先日、農業の専門分野の方から、こんなご感想を、いただきました。\n\n「新規就農者が、減っている時代の中で、あなたの動画を見て、農業に興味を持つ方、家業を引き継ぐ方が、増えてくれるといい」と。\n\nしかも、僕の動画について、こうも、言ってくださいました。\n\n「動画の中でも、一番、面白かった。気持ちよく、伝わっている」と。\n\n僕自身、本当に、嬉しかったです。\n\n僕がやっていることは、特別なことじゃ、ありません。\n\n**実際に利益を上げる農業を、組み立てて、実践して、自分の地域で活かしていく**。\n\nその術を、年々、積み重ねていく。\n\nその積み重ねを、テーマごとに、お伝えする。\n\nそれで、役に立ってくれる方が、増えてくれることが、僕にとって、一番、ありがたいことです。\n\nぜひ、今年の5月、種を蒔いて、3年後の自分に、プレゼントしてください。\n\nそして、自分の畑に合わせて、戦略を組むなら、\n\n概要欄から、公式LINEに登録して、\n\n「農業のゲームチェンジ」動画を、見てください。\n\n最後まで、ありがとうございました。\n\n> → スライド：「**土が変われば、3年後の自分が変わる**」+ 「**実際に利益を上げる農業を、地域に活かす**」+ チャンネル登録ボタン + 「🎁 公式LINE→『農業のゲームチェンジ』」リンク\n\n---", "char_count": 892, "importance": "cta", "importance_label": "📣 CTA", "ng_terms": [], "scroll_count": 0},13: {"index": 13, "section_title": "📊 尺見積もり（v3.6）", "headline": "尺見積もり", "subline": "v3.6", "duration_hint": "", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "| セクション | 想定読み時間 | 累計 | v3.5比 |\n|------------|------------|------|------|\n| 1. OP（LINE特典チラ見せ追加） | 70秒 | 1:10 | +10秒 |\n| 2. 自己診断 5問 | 90秒 | 2:40 | ±0 |\n| 3. 危機感 | 300秒 | 7:40 | ±0 |\n| 4. プロ登場・3年ストーリー | 120秒 | 9:40 | ±0 |\n| 5. ソルゴー3兄弟 | 380秒 | 16:00 | ±0 |\n| 6. 1年タイムライン（中盤LINE橋渡し追加） | 215秒 | 19:35 | +20秒 |\n| 7. キャベツ&白菜への効果 | 90秒 | 21:05 | ±0 |\n| 8. YouTube姿勢 | 45秒 | 21:50 | ±0 |\n| 9. 5落とし穴 | 360秒 | 27:50 | ±0 |\n| 10. 失敗事例コーナー | 180秒 | 30:50 | ±0 |\n| 11. CTA橋渡し（2段ロケット書き換え） | 150秒 | 33:20 | +30秒 |\n| 12. 締め（断言型に微調整） | 120秒 | 35:20 | ±0 |\n\n→ 読み上げ生 **約35分20秒**（v3.5+60秒）\n→ カット後でも **30分超え**を維持🌟\n\n---", "char_count": 458, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0},14: {"index": 14, "section_title": "🎬 撮影フォーマット", "headline": "撮影フォーマット", "subline": "", "duration_hint": "", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "- OBS画面録画、1920×1080、F11フルスクリーン\n- セクション単位で分割撮影推奨（12セクション）\n- スライド遷移：手動（Pキーで発表者ビュー）\n\n---", "char_count": 78, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0},15: {"index": 15, "section_title": "⚠️ 撮影前のチェックリスト（v3.6）", "headline": "撮影前のチェックリスト", "subline": "v3.6", "duration_hint": "", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "### 🆕 LINE特典関連の確認事項（おむ太郎さん依頼書ベース）\n\n🔢 **A. LINE特典動画は既存の「農業のゲームチェンジ」を使用**\n- 既存：`Documents/Claude/Projects/②オプトイン▸動画▸個別相談ブラッシュアップ/完全フロー全文_イチロウ×おむ太郎さん.md`\n- 動画タイトル：「農業のゲームチェンジ — 稼げる農業と詰まる農業を分ける、たった1つの順番」\n- 配信フロー：LINE登録→即送付→15分後フォロー→翌日/2日後/3日後ステップ配信→「個別相談」キーワードで予約URL自動返信→診断フォーム10問→相談当日→施策3選＋感想5問\n- ✅ 既存設計をそのまま使うため、ソルゴー動画のCTAでは「公式LINE登録→『農業のゲームチェンジ』動画プレゼント」を強調\n\n🔢 **B. 「期間限定」打ち出し済み（v3.6最新版）**\n- ご主人様判断（2026-05-23）：「突然やめてしまうかもしれませんので」の柔らかい言い方で打ち出し\n- 3箇所（OP末尾／セクション6中盤橋渡し／セクション11 1段目CTA）に配置済み\n- ✅ 期限日数を明示せず、いつ終わるか分からない不確実性で渇望創出\n- ✅ おむ太郎さんへの追加依頼不要（既存ステップ配信のまま、突然停止の可能性だけ示唆）\n\n### 既存 [要：ご主人様取材] タグ（v3.5から継続・合計7箇所）\n\n🔢 **1.** セクション3末尾：3年前、土が疲れてる気づきの具体的エピソード\n🔢 **2.** セクション4末尾：緑肥本格導入の決断のきっかけ\n🔢 **3.** セクション5次男末尾：実際に土を掘って比較した時の体験\n🔢 **4.** セクション6・7月末尾：成長期の畑の写真・動画素材\n🔢 **5.** セクション7冒頭：キャベツ以外の作物でソルゴー効果を感じた具体例\n🔢 **6.** セクション9落とし穴3：一斉発芽させるための地ならし方法\n🔢 **7.** セクション10失敗事例2：実際の種の量・1反あたりの推奨量\n\n→ 撮影前にLINE特典動画の中身（A）と既存7点を確定できれば、渇望MAX台本として撮影可能🌾\n\n---", "char_count": 860, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0},16: {"index": 16, "section_title": "🔥 想定スコア（採点軸 v2: elsan_katsubo_framework_v2_from_plaud.md）", "headline": "想定スコア", "subline": "採点軸 v2: elsan_katsubo_framework_v2_from_plaud.md", "duration_hint": "", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "| 項目 | v3.5 | v3.6 | 改善 |\n|---|---|---|---|\n| Q1. LINE登録一択 | 9 | 9 | ±0 |\n| Q2. 渇望3ステップ | 8 | 9 | +1（「農業のゲームチェンジ」動画で次のステップ提示） |\n| Q3. 期間限定1本動画 | 3 | **9** | **+6** ⭐（既存LINE特典＋「突然やめるかも」期間限定打ち出し） |\n| Q4. 予告編専門性+解決不可能性 | 8 | 9 | +1（「稼げる農業と詰まる農業の順番」=バックエンド予告編化） |\n| Q5. 中盤＋終盤の二重告知 | 7 | **9** | **+2** ⭐ |\n| Q6. 渇望打ち消しNo | 7 | **9** | **+2** ⭐（断言型書き換え） |\n| Q7. 損失回避刺激 | 9 | 9 | ±0 |\n| Q8. あり方/人間性/温かみ | 9 | 9 | ±0 |\n| Q9. 楽NG/挑戦可能感 | 9 | 9 | ±0 |\n| Q10. 検証・超具体 | 9 | 9 | ±0 |\n\n**想定合計：78点 → 90点（渇望MAX到達）**\n\n---", "char_count": 387, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0},17: {"index": 17, "section_title": "🔗 関連", "headline": "関連", "subline": "", "duration_hint": "", "section_label": "セクション", "section_color": "#5d6d7e", "raw_text": "- `2026-05-22_sorgo_torisetsu-style_v3_30min_yomiage.md` — v3.5（原版）\n- `knowledge/elsan_katsubo_framework_v2_from_plaud.md` — 渇望フレームワーク完全版（採点軸）\n- `knowledge/script-scoring-2026-05-23-v2-katsubo.md` — v3.5採点結果（78点）\n- [[feedback_ichiro_voice]] — ご主人様の声色ルール\n- [[feedback_field_knowledge_from_user_only]] — 現場ノウハウはご主人様発言由来のみ\n- [[reference_plaud_elsan_recordings]] — PLAUDエルさん録音 原典", "char_count": 351, "importance": "normal", "importance_label": "", "ng_terms": [], "scroll_count": 0}
+    };
+    
+function openCard(idx) {
+  const data = window.__BOARD__[idx];
+  if (!data) return;
+  document.getElementById('modal-title').textContent = data.headline + (data.subline ? `（${data.subline}）` : '');
+  document.getElementById('modal-section').textContent = `#${data.index} · ${data.section_title}`;
+  document.getElementById('modal-label').textContent = data.section_label;
+  document.getElementById('modal-label').style.background = data.section_color;
+  document.getElementById('modal-chars').textContent = data.duration_hint
+    ? `${data.duration_hint}（実測 ${data.char_count}字）`
+    : `${data.char_count}字`;
+  document.getElementById('modal-importance').textContent = data.importance_label;
+  document.getElementById('modal-ng').textContent = data.ng_terms.length
+    ? `🚨 NG表現: ${data.ng_terms.join(', ')}`
+    : '✅ NG表現なし';
+  document.getElementById('modal-ng').style.color = data.ng_terms.length ? '#b00020' : '#06a77d';
+  document.getElementById('modal-body').textContent = data.raw_text;
+  document.getElementById('overlay').classList.add('active');
+}
+function closeCard() {
+  document.getElementById('overlay').classList.remove('active');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCard();
+});
+
+  </script></body></html>
