@@ -10,76 +10,78 @@ h1{font-size:21px;color:#7be0a0;font-weight:800}
 .bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin:12px 0 4px;background:#1c2620}
 .bar i{display:block}.bar .dn{background:#2e9e5b}.bar .td{background:#e0a020}
 .barlbl{font-size:12px;color:#9fc0a8;margin-bottom:6px}
-.legend{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:12px}
-.legend span{border-radius:999px;padding:4px 10px;font-weight:700}
-.lg-a{background:#1c2e23;color:#7be0a0;border:1px solid #34553f}.lg-u{background:#231b15;color:#ffb86b;border:1px solid #5a4126}
-h2{font-size:17px;color:#ffd98a;margin:22px 0 10px;border-left:5px solid #ffd98a;padding-left:10px}
-.flow{background:#15211a;border:1px solid #2c4636;border-radius:12px;padding:12px 15px;font-size:14px;margin-bottom:6px}.flow b{color:#7be0a0}
-.item{display:flex;gap:11px;align-items:flex-start;border-radius:12px;padding:12px 14px;margin-bottom:8px}
-.item .ck{flex:0 0 auto;font-size:20px;line-height:1.2}
-.done{background:#13211a;border:1px solid #2f5a3f}.done .h{color:#7be0a0;font-weight:800;font-size:15px}
-.todo{background:#1a1410;border:1px solid #5a4126}.todo .h{color:#ffd9a8;font-weight:800;font-size:15px}
-.item .d{font-size:13px;color:#cfe2d4;margin-top:2px}
-.item a{color:#8fd0ff;word-break:break-all}
-.meta{margin-top:5px;font-size:11.5px}.meta .m{background:#241c14;border:1px solid #5a4126;border-radius:7px;padding:2px 8px;margin-right:5px}
-.who-a{color:#7be0a0}.who-u{color:#ffb86b}
-.warn{background:#2a160f;border:2px solid #e0564f;border-radius:14px;padding:14px 16px;margin:6px 0}
-.warn h3{color:#ff7a6e;font-size:16px;margin-bottom:8px}
-.warn li{list-style:none;font-size:14px;line-height:1.85;color:#ffd9d2;padding-left:22px;position:relative}
-.warn li:before{content:'⚠️';position:absolute;left:0;font-size:11px;top:5px}
-.day{display:flex;gap:12px;margin-bottom:7px;background:#141b16;border:1px solid #2c4636;border-radius:11px;padding:10px 13px}
-.day .d{flex:0 0 64px;font-size:13px;font-weight:800;color:#7be0a0}.day .c{font-size:13.5px;color:#d2e4d8}
-.day.rest .d{color:#8aa}.day.big{border-color:#e0a020}
-.decidebox{background:#231711;border:2px solid #ff9d3c;border-radius:14px;padding:15px 17px;margin-top:8px}
-.decidebox h3{color:#ff9d3c;font-size:16px;margin-bottom:8px}
-.decidebox li{list-style:none;font-size:14.5px;line-height:1.95;color:#ffe6c9;padding-left:23px;position:relative}.decidebox li:before{content:'🔴';position:absolute;left:0;font-size:11px;top:6px}
+h2{font-size:17px;color:#ffd98a;margin:24px 0 10px;border-left:5px solid #ffd98a;padding-left:10px}
+/* 最小工数ボックス */
+.minbox{background:linear-gradient(135deg,#2a1410,#1a1410);border:2px solid #ff7a4d;border-radius:16px;padding:16px 16px 14px;margin:10px 0}
+.minbox .ttl{font-size:18px;font-weight:800;color:#ff9d6e}
+.minbox .lead{font-size:12.5px;color:#ffd9c4;margin:3px 0 11px}
+.mtask{display:flex;gap:11px;align-items:flex-start;background:#1c130e;border:1px solid #5a3a26;border-radius:11px;padding:11px 13px;margin-bottom:8px}
+.mtask .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#ff7a4d;color:#1a0e08;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center}
+.mtask .h{font-size:15px;font-weight:800;color:#ffe7d6}
+.mtask .d{font-size:12.5px;color:#e0c8ba;margin-top:2px}
+.mtask .t{font-size:11px;color:#ffb38f;font-weight:700;margin-top:3px}
+.mtot{font-size:13px;color:#ffd9c4;text-align:center;margin-top:6px;font-weight:700}
+/* プラスアルファ */
+.plus{background:#0e1f17;border:2px solid #2e9e5b;border-radius:16px;padding:15px 16px;margin:10px 0}
+.plus .ttl{font-size:17px;font-weight:800;color:#7be0a0}
+.plus .lead{font-size:12.5px;color:#bfe3c8;margin:3px 0 10px}
+.ptask{background:#13261c;border:1px solid #2f5a3f;border-radius:11px;padding:10px 13px;margin-bottom:7px}
+.ptask .h{font-size:14.5px;font-weight:800;color:#cdeed7}
+.ptask .up{font-size:12.5px;color:#9fd9b3;margin-top:2px}
+.ptask .up b{color:#7be0a0}
+/* 完了/補足 */
+.flow{background:#15211a;border:1px solid #2c4636;border-radius:12px;padding:12px 15px;font-size:13.5px;margin-bottom:6px}.flow b{color:#7be0a0}
+.donewrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.donechip{background:#13211a;border:1px solid #2f5a3f;border-radius:999px;padding:5px 11px;font-size:12px;color:#9fe0b3}.donechip:before{content:'✅ '}
+.day{display:flex;gap:12px;margin-bottom:7px;background:#141b16;border:1px solid #2c4636;border-radius:11px;padding:9px 13px}
+.day .d{flex:0 0 60px;font-size:12.5px;font-weight:800;color:#7be0a0}.day .c{font-size:13px;color:#d2e4d8}
+.day.rest .d{color:#8aa}.day.big{border-color:#ff7a4d}.day.big .d{color:#ff9d6e}
 .links{background:#11161f;border:1px solid #2f4660;border-radius:12px;padding:12px 15px;font-size:13px}.links a{color:#8fd0ff;word-break:break-all;display:block;margin:4px 0}
 .foot{margin-top:18px;font-size:11px;color:#6b8472}
 </style></head><body><div class=wrap>
 <h1>個別相談ローンチ ロードマップ</h1>
-<div class=sub>農業ゲームチェンジ 個別相談（@saikoyasai → LINE → 個別相談）／2026-06-18 更新・2人相談反映</div>
+<div class=sub>農業ゲームチェンジ 個別相談（@saikoyasai → LINE → 個別相談）／2026-06-18 更新</div>
 
-<div class=barlbl>進捗：ファネルはほぼ完成、残りは入口＋仕上げ</div>
+<div class=barlbl>進捗：ファネルはほぼ完成（7割）。あとは下の"最小工数"だけで来週ローンチできる。</div>
 <div class=bar><i class=dn style="width:70%"></i><i class=td style="width:30%"></i></div>
-<div class=legend><span class=lg-a>🟢 あいな</span><span class=lg-u>🟠 ご主人様（判断・収録）</span></div>
 
-<h2>🔁 ファネルの流れ（おさる式・稼働中）</h2>
-<div class=flow>① 入口(X・YouTube) → ② <b>LINE登録</b> → ③ <b>現状0〜5診断</b> → ④ <b>動画</b> → ⑤ <b>個別相談(無料)</b> → ⑥ クロージング</div>
+<h2>🔴 ご主人様の最小工数 ＝ これだけでローンチできる</h2>
+<div class=minbox>
+  <div class=ttl>正味これだけ。あとは全部あいながやる。</div>
+  <div class=lead>※重いのは「収録」1つだけ。残りは"決める"だけ（各10分）。</div>
+  <div class=mtask><div class=n>1</div><div><div class=h>入口動画の収録</div><div class=d>YouTube本編1本＋X短尺2〜3本。台本はあいなが用意済みのを読み上げるだけ。<b style="color:#ff9d6e">※個人的な話（シングル等）は公開動画に出さない＝LINE内のみ</b></div><div class=t>⏱ 実働 約1〜2時間（唯一の重い工数）</div></div></div>
+  <div class=mtask><div class=n>2</div><div><div class=h>締切オファーの数字を決める</div><div class=d>個別相談「◯名まで・◯日まで」。"今動く理由"を作る。</div><div class=t>⏱ 約10分（決めるだけ）</div></div></div>
+  <div class=mtask><div class=n>3</div><div><div class=h>個別相談の後ろの商品を決める</div><div class=d>無料相談の先の有料商品・価格（無いと売上が立たない）。</div><div class=t>⏱ 約10分（決めるだけ）</div></div></div>
+  <div class=mtask><div class=n>4</div><div><div class=h>最終チェックにOKを出す</div><div class=d>あいなが実機1周テスト（リンク確認）→ご主人様は結果を見てGO。</div><div class=t>⏱ 約10分（確認だけ）</div></div></div>
+  <div class=mtot>＝ ご主人様の正味＝収録1〜2時間 ＋ 決める3つ（計30分）。これでローンチ開始まで行ける。</div>
+</div>
+
+<h2>✨ プラスアルファ ＝ やると伸びる（必須じゃない）</h2>
+<div class=plus>
+  <div class=ttl>余力があればここを足すと、成果が大きくなる。</div>
+  <div class=lead>※全部あいなが作る。ご主人様は判断とGOだけ。</div>
+  <div class=ptask><div class=h>① 放置リストへの再アプローチ</div><div class=up>森田さんは2年放置のリスト1400名→<b>成約4件・売上385万円</b>。ご主人様の放置リストにも反応する人がいるはず＝<b>いちばん大きな上積み</b>。</div></div>
+  <div class=ptask><div class=h>② 診断Gem特典（あなたの畑の"次の一手"AI）</div><div class=up>ご主人様の知識だけで答えるAIを特典に。使った人が<b>「この人に相談したい」と自然に思う</b>＝関係構築が一気に進む。指示文は作成済み。</div></div>
+  <div class=ptask><div class=h>③ 特典の見せ方をしょーてぃ式で強化</div><div class=up>"動画6本"でなく"変化後の状態"で見せる＝<b>登録率が上がる</b>。0〜5診断を主役に。</div></div>
+</div>
+
+<h2>📅 来週ローンチまでの並べ方（参考）</h2>
+<div class=day><div class=d>月〜火</div><div class=c>あいなが台本・告知・特典・実機テストを仕上げる（ご主人様は決める3つだけ）</div></div>
+<div class="day big"><div class=d>水</div><div class=c>🎬 <b>ご主人様：収録（1〜2時間）</b>＝ここだけ死守</div></div>
+<div class=day><div class=d>木〜金</div><div class=c>あいなが編集指示・告知準備・最終チェック → ご主人様GO</div></div>
+<div class="day rest"><div class=d>土日</div><div class=c>ご主人様は休み（あいなは予約セットのみ）</div></div>
+<div class="day big"><div class=d>翌週頭</div><div class=c>🚀 ローンチ開始</div></div>
 
 <h2>✅ もう完了（稼働中）</h2>
-<div class="item done"><div class=ck>✅</div><div><div class=h>UTAGE 配信シナリオ 13通＝稼働中</div><div class=d>登録→0-5診断→動画→個別相談→後追い。文字化けナシ・日程整合OK確認済。おむ太郎さんの構築は完了。</div></div></div>
-<div class="item done"><div class=ck>✅</div><div><div class=h>B＝LINE後の特典（作成済み）</div><div class=d>入口＝6種動画＋現状診断。※見せ方はこれから🟠しょーてぃ式で強化（下記）。</div></div></div>
-<div class="item done"><div class=ck>✅</div><div><div class=h>C＝個別相談（無料）完成・リンク有</div><div class=d><a href="https://utage-system.com/p/x0ec6Z9ktoiz">申込リンク</a>／クロージング台本ボードもほぼ完成（ヤスさん流）。</div></div></div>
-<div class="item done"><div class=ck>✅</div><div><div class=h>プリプリ動画 2本（X版・YouTube版）台本ボード化</div><div class=d>X＝共感入口／YT＝苗起点・判断の順番。</div></div></div>
-
-<h2>⚠️ 入口を作る"前に"潰す3つ（2人相談・ここが抜けると登録増えても売上ゼロ）</h2>
-<div class=warn><ul>
-  <li><b>締切のあるオファー設計</b>＝相談枠「◯名・◯日まで」限定（"今動く理由"を作る）</li>
-  <li><b>相談後の有料着地</b>＝無料相談の後ろの商品を決める（無いと売上が立たない）</li>
-  <li><b>実機1周テスト</b>＝登録→診断→動画→相談リンクをスマホで実際に踏む（リンク事故がローンチ最頻事故）</li>
-</ul></div>
-
-<h2>🛠 残りの主戦場（あいな＋ご主人様だけで）</h2>
-<div class="item todo"><div class=ck>⬜</div><div><div class=h>入口 YouTube 本編（ローンチ動画）</div><div class=d>冒頭でUSP数字先出し（9-14時・土日休み・年100t）→共感→判断の順番→実例→余白→CTA2回。LINE一点へ。<br><b style="color:#ff9d3c">※シングルファザー等の個人的な話は公開動画には出さない＝LINE内動画のみ。</b></div><div class=meta><span class=m><span class=who-a>🟢台本=あいな</span></span><span class=m><span class=who-u>🟠収録=ご主人様</span></span></div></div></div>
-<div class="item todo"><div class=ck>⬜</div><div><div class=h>入口 X 短尺</div><div class=d>1.5秒で問いフック「その苗、売り先決まってますか」→答えは言い切らない→CTAはプロフLINE一点。</div><div class=meta><span class=m><span class=who-a>🟢台本=あいな</span></span><span class=m><span class=who-u>🟠収録=ご主人様</span></span></div></div></div>
-<div class="item todo"><div class=ck>⬜</div><div><div class=h>特典の見せ方を しょーてぃ式 で強化</div><div class=d>"動画6本"でなく"変化後の状態"で見せる。0-5現状診断を主役に。目玉1本を磨く。</div><div class=meta><span class=m><span class=who-a>🟢あいな</span></span><span class=m><span class=who-u>🟠最終OK</span></span></div></div></div>
-
-<h2>📅 1週間段取り（2人相談の合意）</h2>
-<div class=day><div class=d>月</div><div class=c>実機1周テスト＋直近の数字確認（登録数/予約率）🟢</div></div>
-<div class=day><div class=d>火</div><div class=c>入口動画の台本確定＋締切オファー設計（🟠枠数/期限を決定）</div></div>
-<div class="day big"><div class=d>水</div><div class=c><b>収録（🟠ご主人様・唯一の重い工数＝ここ死守）</b>＝YT本編1本＋X短尺数本</div></div>
-<div class=day><div class=d>木</div><div class=c>特典の見せ方リライト（しょーてぃ式）🟢→🟠最終OK</div></div>
-<div class=day><div class=d>金</div><div class=c>告知準備（X固定ポスト・概要欄・初日告知文）🟢</div></div>
-<div class="day rest"><div class=d>土日</div><div class=c>ご主人様は休み（USP遵守）。あいなは予約投稿セットのみ。</div></div>
-<div class="day big"><div class=d>翌週頭</div><div class=c>🚀 ローンチ開始（動画公開→X連投→LINE流入→相談予約→即レス）</div></div>
-
-<h2>🔴 ご主人様が決める・やること（これだけ）</h2>
-<div class=decidebox><ul>
-  <li>相談枠の限定：何名まで・いつまで（締切オファー）</li>
-  <li>個別相談の後ろの有料商品・価格</li>
-  <li>入口動画の収録（水曜・唯一の重い工数）</li>
-  <li>特典の見せ方リライトの最終OK</li>
-</ul></div>
+<div class=donewrap>
+  <span class=donechip>UTAGE配信13通シナリオ</span>
+  <span class=donechip>LINE特典（6種動画＋診断）</span>
+  <span class=donechip>個別相談ページ＆リンク</span>
+  <span class=donechip>プリプリ動画 X版・YT版</span>
+  <span class=donechip>クロージング台本ボード</span>
+  <span class=donechip>おむ太郎さんの構築</span>
+</div>
+<div class=flow style="margin-top:10px">流れ＝① 入口(X・YouTube) → ② <b>LINE登録</b> → ③ <b>現状0〜5診断</b> → ④ <b>動画</b> → ⑤ <b>個別相談(無料)</b> → ⑥ クロージング</div>
 
 <h2>🔗 リンク</h2>
 <div class=links>
@@ -89,5 +91,5 @@ h2{font-size:17px;color:#ffd98a;margin:22px 0 10px;border-left:5px solid #ffd98a
   <a href="https://nakagawaichiro12.github.io/gc-soudan/">個別相談 台本ボード トップ</a>
 </div>
 
-<div class=foot>あいな ／ 出典：個別相談チャンネル＋UTAGE実物＋gc-soudanボード＋2人相談(フェーブル/Codex)。捏造なし。</div>
+<div class=foot>あいな ／ 出典：個別相談チャンネル＋UTAGE実物＋gc-soudanボード＋2人相談。最小工数＝ご主人様の正味の手だけを抽出。捏造なし。</div>
 </div></body></html>
