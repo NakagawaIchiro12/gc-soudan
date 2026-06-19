@@ -30,6 +30,7 @@ h1{font-size:17px;margin:0;color:#9fe0a8}
 <div class=tabs id=tabs></div>
 <div id=pages></div>
 <script>
+const CUSTOM="見出し(テロップ)は内容に合わせて自動生成／カット＝無音と言い直しをジェットカットで詰める／2秒に1アクション(テロップ切替・ズーム・b-rollカット・数字強調)を保つ／画像は現場(畑/ハウス/出荷)寄りでAI生成可／CTAは最後の数秒で『固定ポスト→LINE→無料相談会』へ自然に流す(売り込み感は出さない)／〆切6/28を最後に残す";
 const V=[
  {d:"6/22(月)",c:"あと6日",t:"① 順番のズレ（核フック）",
   s:"「売り先がないから稼げない」。\n農業を始めた頃、僕もずっと、そう思ってました。\nでも16年やって分かったんです。稼げなくなるのには、順番がある。\n品質と量が安定しない。だから出荷量が読めない。だから売上も読めない。だから判断が重くなる。この負のループ。\n原因は、努力不足でも品種でもない。\"変えるべき順番\"がズレてるだけ。\n順番を変えたら、僕は半日労働・土日休みで、年間100t出荷を続けられるようになりました。\nこの順番、同じ悩みの人に届けたい。続きは固定ポストから。〆切6月28日。",
@@ -73,9 +74,15 @@ V.forEach((v,i)=>{
  b.innerHTML=v.t.split(' ')[0]+'<small>'+v.d+'</small>';b.onclick=()=>show(i);tabs.appendChild(b);
  const p=document.createElement('div');p.className='page'+(i==0?' on':'');
  p.innerHTML='<div class=ttl>'+v.t+'</div><div class=meta>'+v.d+' ／ '+v.c+' ／ 30〜90秒OK（しっかり解説して可・短く締めてもOK）</div>'
-  +'<div class=lbl>🎯 動画コンテキスト（ブループリントに入れる＝AIがテンプレ判断）</div>'
-  +'<div class=telop style="border-style:solid;border-color:#ffd86b">・<b>ターゲット視聴者</b>：'+(v.tgt||'稼げず悩む農家／これから本気でやりたい農業者（困り感の強い現役・中堅）')+'<br>・<b>目的</b>：'+(v.goal||'')+'</div>'
-  +'<div class=lbl>📖 読み上げ台本</div><div class=script id=sc'+i+'>'+v.s+'</div><button class=copy onclick="cp('+i+')">台本をコピー</button>'
+  +'<div class=lbl>🎬 動画コンテキスト（ブループリントに1:1で貼る）</div>'
+  +'<div class=telop style="border-style:solid;border-color:#ffd86b">'
+    +'・<b>動画タイプ</b>：ソロ　／　<b>話者位置</b>：右　／　<b>テロップ行数</b>：自動<br>'
+    +'・<b>ターゲット視聴者</b>：'+(v.tgt||'稼げず悩む農家／これから本気でやりたい農業者（困り感の強い現役・中堅）')+'<br>'
+    +'・<b>動画の目的</b>：'+(v.goal||'')+'<br>'
+    +'・<b>台本/ナレッジ</b>：↓下の「読み上げ台本」をそのまま貼る</div>'
+  +'<div class=lbl>⚙️ カスタム指示（ブループリントの"カスタム指示"欄に貼る）</div>'
+  +'<div class=telop>'+CUSTOM+'</div>'
+  +'<div class=lbl>📖 読み上げ台本（＝台本/ナレッジ欄）</div><div class=script id=sc'+i+'>'+v.s+'</div><button class=copy onclick="cp('+i+')">台本をコピー</button>'
   +'<div class=lbl>🅣 テロップ（1画面1メッセージ・大きめ）</div><div class=telop>'+v.tl.map(x=>'・'+x).join('<br>')+'</div>'
   +'<div class=lbl>🎯 CTA導線</div><div class=cta>'+v.cta+'</div>';
  pages.appendChild(p);
