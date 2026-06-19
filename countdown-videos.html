@@ -1,0 +1,83 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>カウントダウンX動画 台本ボード（6/22〜6/28）</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,'Hiragino Kaku Gothic ProN',Meiryo,sans-serif;background:#0f1410;color:#e8efe6;line-height:1.7}
+header{background:#16241a;padding:14px 16px;position:sticky;top:0;z-index:5;border-bottom:1px solid #2c3f2e}
+h1{font-size:17px;margin:0;color:#9fe0a8}
+.sub{font-size:12px;color:#8aa68c;margin-top:3px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#13201600;position:sticky;top:58px;background:#0f1410;z-index:4;border-bottom:1px solid #223;}
+.tab{flex:0 0 auto;padding:8px 12px;border-radius:999px;background:#1d2c20;color:#bcd;font-size:13px;font-weight:700;border:1px solid #2c3f2e;cursor:pointer;white-space:nowrap}
+.tab.on{background:#2e9e5b;color:#fff;border-color:#2e9e5b}
+.tab small{display:block;font-size:10px;font-weight:400;opacity:.85}
+.page{display:none;padding:16px;max-width:680px;margin:0 auto}
+.page.on{display:block}
+.ttl{font-size:19px;font-weight:800;color:#fff;margin:0 0 2px}
+.meta{font-size:12px;color:#8aa68c;margin-bottom:12px}
+.lbl{font-size:12px;font-weight:800;color:#9fe0a8;margin:16px 0 5px;letter-spacing:.04em}
+.script{background:#172419;border:1px solid #2c3f2e;border-radius:12px;padding:14px;font-size:16px;white-space:pre-wrap;color:#f2f7f0}
+.telop{background:#101a13;border:1px dashed #3a5540;border-radius:10px;padding:11px;font-size:13px;color:#cfe}
+.telop b{color:#ffd86b}
+.cta{background:#1f3a28;border-left:4px solid #2e9e5b;border-radius:8px;padding:10px 12px;font-size:13px;color:#dfeede;margin-top:6px}
+.note{font-size:12px;color:#8aa68c;background:#141d16;border-radius:10px;padding:12px;margin:18px 0 4px}
+.copy{margin-top:8px;padding:7px 13px;border:none;border-radius:999px;background:#2e9e5b;color:#fff;font-weight:700;font-size:13px;cursor:pointer}
+</style></head><body>
+<header>
+<h1>🎬 カウントダウンX動画 台本ボード</h1>
+<div class=sub>6/22(月)〜6/28(日) ・1日1本 ・各30秒 ・全部"固定ポスト→LINE→無料相談会"へ誘導 ／ 〆切 6/28 23:59</div>
+</header>
+<div class=tabs id=tabs></div>
+<div id=pages></div>
+<script>
+const V=[
+ {d:"6/22(月)",c:"あと6日",t:"① 順番のズレ（核フック）",
+  s:"「売り先がないから稼げない」。\n農業を始めた頃、僕もそう思っていました。\nでも16年やって分かったのは——稼げないのは、努力不足でも品種でもなく\"順番のズレ\"でした。\n順番を変えるだけで、半日労働・土日休みで、年間100t出荷を続けています。\n同じことで悩む人に、この\"順番\"を届けたい。\n続きはプロフィールの固定ポストから。〆切は6月28日。",
+  tl:["稼げない原因＝<b>順番のズレ</b>","半日労働 × 年間100t","固定ポストから・<b>〆切6/28</b>"],
+  cta:"固定ポスト→LINE登録→無料相談会(0〜5現在地)"},
+ {d:"6/23(火)",c:"あと5日",t:"② 半日労働で100t（働き方の衝撃）",
+  s:"農業って、朝から晩まで——そう思っていませんか。\n僕は朝9時から14時の5時間労働、土日は休み。\nそれで年間100t出荷を、16年続けています。\n\"長く働くほど稼げる\"は、逆でした。大事なのは時間より\"順番と仕組み\"。\nその作り方、固定ポストから受け取れます。〆切6月28日。",
+  tl:["5時間労働 × 土日休み × <b>100t</b>","長時間 ≠ 稼げる","固定ポスト・<b>〆切6/28</b>"],
+  cta:"固定ポスト→LINE→相談会。働き方に驚いた人ほど刺さる"},
+ {d:"6/24(水)",c:"あと4日",t:"③ 「売り先がない」は勘違い",
+  s:"「売り先さえあれば」。昔の僕の口癖でした。\nでも、売り先がないんじゃない。\"稼げない流れ\"に入っているから、売れなくなるんです。\n順番を直すと、売り先は後からついてくる。\nその全体像、固定ポストから。〆切6月28日。",
+  tl:["売り先がない→<b>流れの問題</b>","順番を直す→売れる","固定ポスト・<b>〆切6/28</b>"],
+  cta:"固定ポスト→LINE→相談会。思い込み破壊フック"},
+ {d:"6/25(木)",c:"あと3日",t:"④ パートさんと回す・土日休み",
+  s:"年間100tを、僕ひとりでは回していません。\nパートさんと、半日ずつの仕組みで回しています。\nだから土日も休めて、子どもの送り迎えにも間に合う。\n\"人に任せられる農業\"の作り方、固定ポストから。〆切6月28日。",
+  tl:["ひとりで抱えない","パート × 半日 × <b>仕組み</b>","固定ポスト・<b>〆切6/28</b>"],
+  cta:"固定ポスト→LINE→相談会。組織化・規模の入口"},
+ {d:"6/26(金)",c:"あと2日",t:"⑤ 0〜5 現在地診断",
+  s:"あなたの農業、今どの段階だと思いますか。\n0は始める前、5は規模拡大。\n実はここを取り違えると、努力の方向がズレます。\nまず\"現在地\"を知るだけで、次の一手が見える。\n無料の相談会で一緒に。固定ポストから・〆切6月28日。",
+  tl:["今どこ？ <b>0〜5の現在地</b>","方向のズレを直す","無料相談会・<b>〆切6/28</b>"],
+  cta:"固定ポスト→LINE→相談会。診断フックで自分ごと化"},
+ {d:"6/27(土)",c:"あと1日",t:"⑥ 明日締切・背中押し",
+  s:"明日、〆切です。\n「順番を変えれば、半日でも回る農業になる」。\n16年かけて気づいたこの順番を、無料の相談会で全部話します。\n迷っているなら、まず\"現在地\"を知るだけでいい。\n固定ポストから、明日まで。",
+  tl:["<b>明日〆切</b>","まず現在地を知るだけ","無料相談会・固定ポストから"],
+  cta:"固定ポスト→LINE→相談会。締切前の最後の一押し"},
+ {d:"6/28(日)",c:"本日締切",t:"⑦ 本日締切・ラストコール",
+  s:"本日23時59分で締切です。\n「稼げないのは、順番のズレ」。\nこれに気づくのに、僕は10年かかりました。\nあなたには、最短で届けたい。\n無料の相談会、今日が最後の受付。固定ポストから。",
+  tl:["<b>本日23:59〆切</b>","10年の遠回りを最短に","最後の受付・固定ポストから"],
+  cta:"固定ポスト→LINE→相談会。ラストコール・渇望MAX"},
+];
+const tabs=document.getElementById('tabs'),pages=document.getElementById('pages');
+V.forEach((v,i)=>{
+ const b=document.createElement('button');b.className='tab'+(i==0?' on':'');
+ b.innerHTML=v.t.split(' ')[0]+'<small>'+v.d+'</small>';b.onclick=()=>show(i);tabs.appendChild(b);
+ const p=document.createElement('div');p.className='page'+(i==0?' on':'');
+ p.innerHTML='<div class=ttl>'+v.t+'</div><div class=meta>'+v.d+' ／ '+v.c+' ／ 約30秒（6字/秒≒180字）</div>'
+  +'<div class=lbl>📖 読み上げ台本</div><div class=script id=sc'+i+'>'+v.s+'</div><button class=copy onclick="cp('+i+')">台本をコピー</button>'
+  +'<div class=lbl>🅣 テロップ（1画面1メッセージ・大きめ）</div><div class=telop>'+v.tl.map(x=>'・'+x).join('<br>')+'</div>'
+  +'<div class=lbl>🎯 CTA導線</div><div class=cta>'+v.cta+'</div>';
+ pages.appendChild(p);
+});
+function show(i){document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('on',k==i));
+ document.querySelectorAll('.page').forEach((p,k)=>p.classList.toggle('on',k==i));window.scrollTo(0,0);}
+function cp(i){const t=V[i].s;navigator.clipboard&&navigator.clipboard.writeText(t);const b=event.target;b.textContent='コピーした✓';setTimeout(()=>b.textContent='台本をコピー',1500);}
+</script>
+<div class=note style="max-width:680px;margin:0 auto 30px">
+🐵 <b>おさる式の回し方</b>：各日は違うフックで"テスト"＝伸びた型を後半(6/26〜28)で厚塗り＋締切で渇望MAX。1本0いいねでも失敗じゃなくテスト1回。全部ラベル(フック/CTA/尺)付けで計測→当たり判定。<br>
+📌 全7本、固定ポスト→LINE→無料"相談会"(0〜5現在地)へ一直線。〆切は事実として淡々と(煽らない)。<br>
+🎥 一気に撮影OK。各タブの台本をそのまま読み上げ→ブループリントでテロップ合成。
+</div>
+</body></html>
